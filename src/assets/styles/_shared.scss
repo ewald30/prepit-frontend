@@ -1,0 +1,135 @@
+@import './variables';
+
+.flex{
+    display: flex;
+
+    &-row{
+        display: flex;
+
+        &-center-x{
+            @extend .flex-row;
+            justify-content: center;
+        }
+
+        &-center-y{
+            @extend .flex-row;
+            align-items: center;
+        }
+    }
+
+    &-column{
+        @extend .flex;
+        flex-direction: column;
+
+        &-center-y{
+            @extend .flex-column;
+            justify-content: center;
+        }
+
+         &-center-x{
+             @extend .flex-column;
+            align-items: center;
+        }
+    }
+
+    &-row{
+        @extend .flex;
+        flex-direction: row;
+    }
+
+    &-space-between{
+        @extend .flex;
+        justify-content: space-between;
+    }
+
+    &-space-around{
+        @extend .flex;
+        justify-content: space-around;
+    }
+}
+
+.input-password{
+    position: relative;
+
+    a {
+        font-size: 1rem;
+        float: right; 
+        margin-right: 5px;
+        position: absolute;
+        top: 18px;
+        right: 15px;
+        color: $accent;
+        font-weight: 700; 
+    }
+}
+
+.input{
+    color: $darker-grey;
+    border: none;
+    outline: none;
+    border-radius: 15px;
+    font-weight: 700;
+    padding: 5rem;
+    padding-top: .8rem;
+    padding-bottom: .8rem;
+    padding-left: 1rem;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    font-size: 1rem;
+}
+
+/* webkit solution */
+::-webkit-input-placeholder { 
+    text-align:left; 
+    color: $darker-grey;
+    font-weight: 700;
+    font-size: 1rem;
+    font-style: italic;
+}
+
+/* mozilla solution */
+input:-moz-placeholder { 
+    text-align:left; 
+    color: $darker-grey;
+
+}
+
+.button{
+    border: none;
+    outline: none;
+    font-size: 1.1rem;
+    padding: 2.5rem;
+    padding-top: .8rem;
+    padding-bottom: .8rem;
+    border-radius: 15px;
+    text-align: center;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    text-decoration: none;
+
+    &-primary{
+        @extend .button;
+        background-color: $primary;
+        color: $accent;
+        font-weight: bold;
+    }
+
+    &-accent{
+        @extend .button;
+        background-color: $accent;
+        color: white;
+        font-weight: bold;
+    }
+
+    &-transparent{
+        @extend .button;
+        color: $accent;
+        font-weight: bold;
+        background-color: $light-grey;
+    }
+}
+
+.logo-rounded{
+    height: 9rem;
+    border-radius: 150px;
+}
