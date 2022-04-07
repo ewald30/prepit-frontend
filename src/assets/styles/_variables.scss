@@ -19,11 +19,8 @@ $background-size-standard: cover;
 $border-radius-standard: 15px;
 $border-radius-rounder: 20px;
 
-$box-shadow-light: 0.5px 0.5px 2.7px rgba(0, 0, 0, 0.016),
-1.2px 1.2px 6.9px rgba(0, 0, 0, 0.022),
-2.5px 2.5px 14.2px rgba(0, 0, 0, 0.028),
-5.1px 5.1px 29.2px rgba(0, 0, 0, 0.034),
-14px 14px 80px rgba(0, 0, 0, 0.05);
+// https://shadows.brumm.af
+$box-shadow-light: 0.5px 0.5px 2.7px rgba(0, 0, 0, 0.016), 1.2px 1.2px 6.9px rgba(0, 0, 0, 0.022), 2.5px 2.5px 14.2px rgba(0, 0, 0, 0.028), 5.1px 5.1px 29.2px rgba(0, 0, 0, 0.034), 14px 14px 80px rgba(0, 0, 0, 0.05);
 
 
 
