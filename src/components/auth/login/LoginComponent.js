@@ -4,7 +4,10 @@ import { Link } from "react-router-dom";
 import login from "../api/index";
 import './LoginComponent.scss';
 import '../../../assets/styles/_shared.scss';
-import logo from '../../../assets/svgs/logo.svg';
+import logo from '../../../assets/svgs/logo_iconOnly.svg';
+import lockGrey from '../../../assets/svgs/lock_grey.svg';
+import userGrey from '../../../assets/svgs/user_grey.svg';
+
 
 const LoginComponent = () => {
     const [state, setState] = useState(AuthState);
@@ -39,24 +42,32 @@ const LoginComponent = () => {
 
     return (
         <div className={'login-component flex-column-center-x'}>
-            <div className={'login-header'}>
+            <div className={'login-component-header'}>
                 <img className={'logo-rounded'} src={logo}/>
             </div>
 
             <div className={'login-component-container'}>
                 <div className={'login-component-container-body'}>
-                    <div className={'login-body-email'}>
-                        <input className={'input'} type={'email'} name={'userEmail'} placeholder={'Enter email address'} value={email} onChange={(event)=>{setState({...state, email: event.target.value})}}/>
+                    <div className={'login-body-email input-icon'}>
+                        <input className={'input'} type={'email'} name={'userEmail'} placeholder={'Username'} value={email} onChange={(event)=>{setState({...state, email: event.target.value})}}/>
+                        <img src={userGrey}/>
                     </div>
-                    <div className={'login-body-password input-password'} >
-                        <input className={'input'} type="password" placeholder={'Enter password'} value={password} onChange={(event)=>{setState({...state, password: event.target.value})}}/>
-                        <a id="lnkforget" class="hyperlink" >Forgot</a>
+
+                    <div className={"input-icon"}>
+                        <input className={'input'} type="password" placeholder={'Password'} value={password} onChange={(event)=>{setState({...state, password: event.target.value})}}/>
+                        <img className={'input-icon-img'} src={lockGrey}/>
                     </div>
+
                 </div>
 
-                <div className={'login-component-container-footer flex-space-between flex-row-center-y'}>
-                    <button className={'login-footer-button button-primary'} onClick={handleLogin}>Login</button>
-                    <button className={'login-footer-register button-transparent'} to={'/auth/register'}>Register</button>
+                <div className={'login-component-container-footer flex-column-center-y flex-column-center-x'}>
+                    <button className={'login-component-footer-button button-primary text-bigger'} onClick={handleLogin}>Login</button>
+                    <div className={'text-dark-grey'}>Forgot password</div>
+                </div>
+
+
+                <div className={'login-component-container-bottom flex-row-center-x text-accent text-dark-grey'}>
+                    Don't have an account? Register <Link className={'link login-component-container-bottom-link'} to="/auth/register">here</Link>
                 </div>
             </div>
  

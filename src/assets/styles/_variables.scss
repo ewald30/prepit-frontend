@@ -1,5 +1,15 @@
 $primary: #b0bda2;
+$primary-darker: #8fa08c;
+$primary-dark: #6d8276;
+$accent-light: #4b6560;
 $accent: #29474a;
+
+
+$gradient-yellow:rgba(255,211,117,1);
+$gradient-orange: #FEB780;
+$gradient-peach: rgba(251,140,140,1);
+$gradient: linear-gradient(90deg, rgba(255,211,117,1) 0%, rgba(251,140,140,1) 100%);
+
 
 $light-green: #a7c957;
 $standard-green: #6a994e;
@@ -8,12 +18,25 @@ $light-orange: #E0A551;
 $light-orange2: #E0A653;
 $red: #bc4749;
 
-$light-grey: #e8eae6;
+$light-black: #1f1f1f;
+$light-grey: #efefef;
+$darkest-grey: #6B6B6B;
 $darker-grey: #b8b8b8;
-$dark-grey: #707070;
+$dark-grey: #757575;
 $white: #ffffff;
 
-$background-position-desktop: -700px -300px;
+$background-position-desktop: -300px -500px;  // green full left top
+$background_position-blob2: 1000px -200px;  // orange empty
+$background_position-blob3: 1100px 650px;   // green right bottom
+$background_position-blob4: 800px 600px;   // dark-green right bottom
+$background_position-blob5: 0px -400px;   // dark-green top left
+$background_position-blob6: -20px 60px;   // dark-green empty
+$background_position-blob23: -300px 420px;   // orange-gradient full
+
+
+
+
+
 $background-size-standard: cover;
 
 $border-radius-standard: 15px;

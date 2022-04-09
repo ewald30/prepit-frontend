@@ -1,16 +1,39 @@
 @import '../../../assets/styles/shared';
 
 .login-component{
-    background-color: $light-grey;
+    background-color: #fff;
     border-radius: $border-radius-rounder;
     padding:2rem;
     margin-left: 3rem;
     box-shadow: $box-shadow-light;
-;
 
-    &-container-body{
-        margin-top: 2.8rem;
-        margin-bottom: 2.8rem;
+    &-container{
+
+        &-body{
+            margin-top: 2.8rem;
+            margin-bottom: 2.8rem;
+        }
+
+        &-bottom{
+            margin-top: 2rem;
+            color: $light-black;
+            
+            &-link{
+                margin-left: .2rem;
+            }
+        }
+
+    }
+
+
+
+    &-header-title{
+        margin-top:1rem;
+        margin-bottom: -2rem;
+    }
+
+    &-footer-button{
+        width: 100%;
     }
 
 

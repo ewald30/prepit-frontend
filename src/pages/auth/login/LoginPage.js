@@ -13,6 +13,9 @@ const LoginPage = () => {
                 </div>
                 <div className={'login-page-graphics'}> 
                     <img src={loginGraphic}/>
+                    <div className={'text-big text-center text-bolder text-dark-grey login-page-graphics-text text-handwriting'}>
+                        Start upgrading your meal prepping game!
+                    </div>
                 </div>
             </div>
         </div>

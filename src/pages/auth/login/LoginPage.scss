@@ -1,20 +1,21 @@
 @import '../../../assets/styles/shared';
 
 .login-page{
-    background-image: url('../../../assets/svgs/blob.svg');
-    background-repeat: no-repeat;
-    background-position: $background-position-desktop;
-    background-size: cover;
     height: 100%;
-    background-color: $light-grey;
-    margin: 0 auto;
+    padding: 0px 200px;
+
+
     
     &-body{
         height: 100%;
     }
 
     &-graphics{
-        margin-left: 35rem;
+        margin-left: 20rem;
+
+        &-text{
+            margin-top: 1rem;
+        }
     }
 
 

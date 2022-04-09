@@ -1,4 +1,80 @@
 @import './variables';
+@import url('https://fonts.googleapis.com/css2?family=Kaushan+Script&display=swap');
+
+.text{
+
+    &-primary{
+        color: $primary;
+    }
+
+    &-primary-darker{
+        color: $primary-darker;
+    }
+
+    &-primary-dark{
+        color: $primary-dark;
+    }
+
+    &-accent{
+        color: $accent;
+    }
+
+    &-orange{
+        color: $gradient-orange;
+    }
+
+    &-peach{
+        color: $gradient-peach;
+    }
+
+    &-light-black{
+        color: $light-black;
+    }
+
+    &-dark-grey{
+        color: $dark-grey;
+    }
+
+    &-normal{
+        font-size: 1rem;
+    }
+
+    &-bigger{
+        font-size: 1.5rem
+    }
+
+    &-big{
+        font-size: 2rem;
+    }
+
+    &-bolder{
+        font-weight: 500;
+    }
+
+    &-bold{
+        font-weight: bold;
+    }
+
+    &-center{
+        text-align: center;
+
+        &-normal{
+            @extend .text-center;
+            font-size: 2rem;
+        }
+
+        &-bigger{
+            @extend .text-center;
+            font-size: 4rem;
+        }
+    }
+
+    &-handwriting{
+        font-family: 'Kaushan Script', cursive;
+    }
+
+
+}
 
 .flex{
     display: flex;
@@ -48,26 +124,17 @@
     }
 }
 
-.input-password{
-    position: relative;
 
-    a {
-        font-size: 1rem;
-        float: right; 
-        margin-right: 5px;
-        position: absolute;
-        top: 18px;
-        right: 15px;
-        color: $accent;
-        font-weight: 700; 
-    }
-}
+
+
 
 .input{
-    color: $darker-grey;
+    color: $darkest-grey;
+    background-color: $light-grey;
+
     border: none;
     outline: none;
-    border-radius: 15px;
+    border-radius: 30px;
     font-weight: 700;
     padding: 5rem;
     padding-top: .8rem;
@@ -76,12 +143,44 @@
     margin-top: .5rem;
     margin-bottom: .5rem;
     font-size: 1rem;
+
+    &-icon{
+        position: relative;
+
+        img {
+            font-size: 1rem;
+            float: left; 
+            margin-right: 7px;
+            position: absolute;
+            top: 12px;
+            right:0px;
+            color: $light-grey;
+            font-weight: 700; 
+            border-radius:30px;
+            padding:.4rem;
+        }
+    }
+
+    &-password{
+        position: relative;
+    
+        a {
+            font-size: 1rem;
+            float: left; 
+            margin-right: 5px;
+            position: absolute;
+            top: 20px;
+            right: 15px;
+            color: $accent;
+            font-weight: 700; 
+        }
+    }
 }
 
 /* webkit solution */
 ::-webkit-input-placeholder { 
     text-align:left; 
-    color: $darker-grey;
+    color: $darkest-grey;
     font-weight: 700;
     font-size: 1rem;
     font-style: italic;
@@ -90,27 +189,28 @@
 /* mozilla solution */
 input:-moz-placeholder { 
     text-align:left; 
-    color: $darker-grey;
+    color: $darkest-grey;
 
 }
 
 .button{
     border: none;
     outline: none;
-    font-size: 1.1rem;
+    font-size: 1.4rem;
     padding: 2.5rem;
-    padding-top: .8rem;
-    padding-bottom: .8rem;
-    border-radius: 15px;
+    padding-top: .6rem;
+    padding-bottom: .6rem;
+    border-radius: 30px;
     text-align: center;
-    margin-top: .5rem;
-    margin-bottom: .5rem;
+    margin-bottom: 1rem;
     text-decoration: none;
 
     &-primary{
         @extend .button;
-        background-color: $primary;
-        color: $accent;
+        //background: linear-gradient(90deg, rgba(255,211,117,1) 0%, rgba(251,140,140,1) 100%);
+        //background-color: #FC5754;
+        background-color: $accent;
+        color: white;
         font-weight: bold;
     }
 
@@ -133,3 +233,14 @@ input:-moz-placeholder {
     height: 9rem;
     border-radius: 150px;
 }
+
+.link{
+    color: $primary-dark;
+
+    &-header{
+        text-decoration: none;
+        color: $accent
+    }
+}
+
+
