@@ -5,8 +5,8 @@ import login from "../api/index";
 import './LoginComponent.scss';
 import '../../../assets/styles/_shared.scss';
 import logo from '../../../assets/svgs/logo_iconOnly.svg';
-import lockGrey from '../../../assets/svgs/lock_grey.svg';
-import userGrey from '../../../assets/svgs/user_grey.svg';
+import lockGrey from '../../../assets/svgs/icons/lock_grey.svg';
+import userGrey from '../../../assets/svgs/icons/user_grey.svg';
 
 
 const LoginComponent = () => {
@@ -41,14 +41,14 @@ const LoginComponent = () => {
 
 
     return (
-        <div className={'login-component flex-column-center-x'}>
-            <div className={'login-component-header'}>
+        <div className={'generic-container flex-column-center-x'}>
+            <div className={'generic-container-header'}>
                 <img className={'logo-rounded'} src={logo}/>
             </div>
 
-            <div className={'login-component-container'}>
-                <div className={'login-component-container-body'}>
-                    <div className={'login-body-email input-icon'}>
+            <div>
+                <div className={'generic-container-body'}>
+                    <div className={'generic-container-body-email input-icon'}>
                         <input className={'input'} type={'email'} name={'userEmail'} placeholder={'Username'} value={email} onChange={(event)=>{setState({...state, email: event.target.value})}}/>
                         <img src={userGrey}/>
                     </div>
@@ -60,14 +60,14 @@ const LoginComponent = () => {
 
                 </div>
 
-                <div className={'login-component-container-footer flex-column-center-y flex-column-center-x'}>
-                    <button className={'login-component-footer-button button-primary text-bigger'} onClick={handleLogin}>Login</button>
+                <div className={'generic-container-action flex-column-center-y flex-column-center-x'}>
+                    <button className={'generic-container-action-button button-primary text-bigger'} onClick={handleLogin}>Login</button>
                     <div className={'text-dark-grey'}>Forgot password</div>
                 </div>
 
 
-                <div className={'login-component-container-bottom flex-row-center-x text-accent text-dark-grey'}>
-                    Don't have an account? Register <Link className={'link login-component-container-bottom-link'} to="/auth/register">here</Link>
+                <div className={'generic-container-bottom flex-row-center-x text-accent text-dark-grey'}>
+                    Don't have an account? Register <Link className={'link generic-container-bottom-link'} to="/auth/register">here</Link>
                 </div>
             </div>
  
