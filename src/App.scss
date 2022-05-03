@@ -1,25 +1,36 @@
 @import "./assets/styles/shared";
+@import "./assets/styles/animations";
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
 
 .app{
+    background: rgba(255, 255, 255, 0.01); // Make sure this color has an opacity of less than 1
+    backdrop-filter: blur(70px); // This be the blur
+    height: 100%;
+}
+
+.app-animated{
+    animation: background-movement 1s;
+}
+
+.blur {
     background-image: url('./assets/svgs/blob.svg'), 
         url('./assets/svgs/blobs/blob-22.svg'),  // orange blob empty
-        url('./assets/svgs/blobs/blob.svg'),
-        url('./assets/svgs/blobs/blob-6.svg'),
+        //url('./assets/svgs/blobs/blob.svg'),
+        //url('./assets/svgs/blobs/blob-6.svg'),
         url('./assets/svgs/blobs/blob-5.svg'),
         url('./assets/svgs/blobs/blob-23.svg'),
         url('./assets/svgs/blobs/blob-8.svg');
 
         
-    background-repeat: no-repeat;
+    background-repeat: space;
     background-position: $background-position-desktop, 
         $background-position-blob2,
-        $background-position-blob3,
-        $background-position-blob4,
+        //$background-position-blob3,
+        //$background-position-blob4,
         $background-position-blob5,
         $background_position-blob23,
         $background_position-blob6;
 
-    background-color: $light-grey;
+    background-color: #ffffff;
     height: 100%;
-}
+  }

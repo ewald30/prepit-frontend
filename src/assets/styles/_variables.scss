@@ -16,22 +16,24 @@ $standard-green: #6a994e;
 $dark-green: #386641;
 $light-orange: #E0A551;
 $light-orange2: #E0A653;
-$red: #bc4749;
+$red: #A91919;
 
 $light-black: #1f1f1f;
 $light-grey: #efefef;
-$darkest-grey: #6B6B6B;
+$darkest-grey: #4F4F4F;
 $darker-grey: #b8b8b8;
 $dark-grey: #757575;
 $white: #ffffff;
 
-$background-position-desktop: -300px -500px;  // green full left top
-$background_position-blob2: 1000px -200px;  // orange empty
+$background-position-desktop: -300px -700px;  // green full left top
+$background_position-blob2: 900px 300px;  // orange empty
 $background_position-blob3: 1100px 650px;   // green right bottom
 $background_position-blob4: 800px 600px;   // dark-green right bottom
-$background_position-blob5: 0px -400px;   // dark-green top left
-$background_position-blob6: -20px 60px;   // dark-green empty
+$background_position-blob5: 0px -530px;   // dark-green top left
+$background_position-blob6: -100px 60px;   // dark-green empty
 $background_position-blob23: -300px 420px;   // orange-gradient full
+$background_position-blob23_2: 200px -100px;   // orange-gradient full
+
 
 
 
@@ -43,7 +45,13 @@ $border-radius-standard: 15px;
 $border-radius-rounder: 20px;
 
 // https://shadows.brumm.af
-$box-shadow-light: 0.5px 0.5px 2.7px rgba(0, 0, 0, 0.016), 1.2px 1.2px 6.9px rgba(0, 0, 0, 0.022), 2.5px 2.5px 14.2px rgba(0, 0, 0, 0.028), 5.1px 5.1px 29.2px rgba(0, 0, 0, 0.034), 14px 14px 80px rgba(0, 0, 0, 0.05);
+//$box-shadow-light: 0.5px 0.5px 2.7px rgba(0, 0, 0, 0.016), 1.2px 1.2px 6.9px rgba(0, 0, 0, 0.022), 2.5px 2.5px 14.2px rgba(0, 0, 0, 0.028), 5.1px 5.1px 29.2px rgba(0, 0, 0, 0.034), 14px 14px 80px rgba(0, 0, 0, 0.05);
+//$box-shadow-light: 2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),12.5px 12.5px 10px rgba(0, 0, 0, 0.035),22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),100px 100px 80px rgba(0, 0, 0, 0.07);
+$box-shadow-light:
+2.8px 3.5px 5.3px rgba(0, 0, 0, 0.04),
+9.4px 11.6px 17.9px rgba(0, 0, 0, 0.06),
+42px 52px 80px rgba(0, 0, 0, 0.1)
+;
 
 
 

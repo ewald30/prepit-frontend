@@ -1,22 +1,30 @@
 import logo from './logo.svg';
-import { Router, Route, Routes, BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import './App.scss';
 import LoginPage from './pages/auth/login/LoginPage';
 import RegisterPage from './pages/auth/register/RegisterPage';
 import Header from './components/header/Header';
-import './App.scss';
+import MealPlanPage from './pages/mealPlan/MealPlanPage';
+import { useState } from 'react';
 
 function App() {
-  return (
-    <BrowserRouter>
-      <div className="app">
-        <Header/>
+  const [animated, setAnimation] = useState(true);
 
-        <Routes>
-          <Route path="/auth/login" element={ <LoginPage/> } />
-          <Route path="/auth/register" element={ <RegisterPage/> } />
-        </Routes>
-      </div>
-    </BrowserRouter>
+  return (
+    <div className={animated? 'blur app-animated' : 'blur'}>
+      <BrowserRouter>
+        <div className={'app'}>
+          <Header/>
+
+          <Routes>
+            <Route path="/auth/login" element={ <LoginPage/> } />
+            <Route path="/auth/register" element={ <RegisterPage/> } />
+            <Route path="/meal-plan" element={ <MealPlanPage/> } />
+          </Routes>
+
+        </div>
+      </BrowserRouter>
+    </div>
   );
 }
 

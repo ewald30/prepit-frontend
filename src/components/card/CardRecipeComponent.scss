@@ -1,0 +1,36 @@
+
+@import '../../assets/styles/shared';
+
+.card{
+    width: 18rem;
+    height: 25rem;
+    padding: 0 !important;
+
+    &-header{
+
+        &-img{
+            width:18rem;
+            height: 13rem;
+            border-radius: $border-radius-standard $border-radius-standard 0px 0px;
+
+        }
+    }
+
+    &-body{
+
+        &-description{
+            width: 85%;
+            font-size: 1.1rem;
+        }
+
+        &-container{
+            height: 100%;
+        }
+    }
+
+    &-footer{
+        margin-right: .5rem;
+        align-items: flex-end;
+    }
+
+}

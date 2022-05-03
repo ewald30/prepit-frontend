@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import '../../../assets/styles/_shared.scss';
 import lockIcon from '../../../assets/svgs/icons/lock_grey.svg';
-import userIcon from '../../../assets/svgs/icons/user_grey.svg';
+import userIcon from '../../../assets/svgs/icons/profile.svg';
 import mailIcon from '../../../assets/svgs/icons/mail_grey.svg';
 import confirmPassword from '../../../assets/svgs/icons/check_grey_o.svg';
 import logo from '../../../assets/svgs/logo_iconOnly.svg';

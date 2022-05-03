@@ -1,18 +1,23 @@
 import React, {useEffect, useState} from "react";
 import { AuthState } from "../../../core/auth";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import login from "../api/index";
 import './LoginComponent.scss';
 import '../../../assets/styles/_shared.scss';
 import logo from '../../../assets/svgs/logo_iconOnly.svg';
 import lockGrey from '../../../assets/svgs/icons/lock_grey.svg';
-import userGrey from '../../../assets/svgs/icons/user_grey.svg';
+import userGrey from '../../../assets/svgs/icons/profile.svg';
+import { useDispatch } from "react-redux";
+import { setLoggedIn } from "../../../redux/actions/auth";
+import { BarLoader } from "react-spinners";
 
 
-const LoginComponent = () => {
+const LoginComponent = (props) => {
+
+    const dispatch = useDispatch();
     const [state, setState] = useState(AuthState);
-    const {email, password, pendingAuth} = state;
-
+    const {email, password, pendingAuth, authenticationError} = state;
+    const navigate = useNavigate();
 
     function handleLogin(){
         setState({pendingAuth: true});
@@ -25,14 +30,13 @@ const LoginComponent = () => {
         
         async function authenticate(){
             try{
-                const response = await login(email, password);
-                setState({pendingAuth: false});
-    
-                console.log(response);
-                console.log('pendingAuth: ', pendingAuth)
+                const token = await login(email, password);                             // get the response from the server
+                setState({...state, pendingAuth: false, authenticationError: null});    // set pending to false and error to null
+                localStorage.setItem('token', token);                                   // set token to localStorage
+                dispatch(setLoggedIn(true)); 
+                navigate('/meal-plan')                                                  // redirect to another page
             } catch (err) {
-                setState({authenticationError: err});
-                setState({pendingAuth: true});
+                setState({...state, pendingAuth: false, authenticationError: err});
             }
         }
     }
@@ -41,6 +45,7 @@ const LoginComponent = () => {
 
 
     return (
+        
         <div className={'generic-container flex-column-center-x'}>
             <div className={'generic-container-header'}>
                 <img className={'logo-rounded'} src={logo}/>
@@ -57,6 +62,8 @@ const LoginComponent = () => {
                         <input className={'input'} type="password" placeholder={'Password'} value={password} onChange={(event)=>{setState({...state, password: event.target.value})}}/>
                         <img className={'input-icon-img'} src={lockGrey}/>
                     </div>
+                    {authenticationError && <div className={'text-red text-center'}> The email or password is invalid.</div>}
+
 
                 </div>
 
@@ -66,13 +73,12 @@ const LoginComponent = () => {
                 </div>
 
 
-                <div className={'generic-container-bottom flex-row-center-x text-accent text-dark-grey'}>
-                    Don't have an account? Register <Link className={'link generic-container-bottom-link'} to="/auth/register">here</Link>
+                <div className={'generic-container-bottom flex-row-center-x text-accent text-dark-grey'} style={{'margin-bottom':'2rem'}}>
+                    Don't have an account? <Link className={'link generic-container-bottom-link'} to="/auth/register">Register</Link>
                 </div>
             </div>
  
-
-            {pendingAuth && <div>PENDING AUTHEENTICATIOON !!!!</div>}
+            {pendingAuth && <BarLoader width={150} height={5} color={'#29474A'} loading={pendingAuth}/>}
         </div>
     )
 }
