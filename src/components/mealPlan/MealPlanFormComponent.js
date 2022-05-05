@@ -28,9 +28,9 @@ const GENDERS = {
 }
 
 const NUMBER_OF_MEALS = {
-    MEALS_PER_DAY_3 : "3",
-    MEALS_PER_DAY_4 : "4",
-    MEALS_PER_DAY_5 : "5"
+    MEALS_PER_DAY_3 : 3,
+    MEALS_PER_DAY_4 : 4,
+    MEALS_PER_DAY_5 : 5
 }
 
 const checkedStyle = { 
