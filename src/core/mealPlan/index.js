@@ -1,4 +1,5 @@
 export const MealPlanState = {
+    userInfo: null,
     height : null,
     weight : null,
     gender: '',

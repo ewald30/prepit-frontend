@@ -1,19 +1,39 @@
 import React, { useState } from 'react';
 import MealPlanFormComponent from '../../components/mealPlan/MealPlanFormComponent';
+import MealSwitcher from '../../components/mealPlan/MealSwitcher';
+
 import '../../assets/styles/_shared.scss';
 import './MealPlanPage.scss'
 
 import graphics from'../../assets/svgs/illustrations/undraw_barbeque.svg';
 import AnimatedTranslateTransition from '../../components/utils/AnimatedTranslateTransition';
 import AnimatedFadeTransition from '../../components/utils/AnimatedFadeTransition';
+import CardRecipeComponent from '../../components/card/CardRecipeComponent';
+import { m } from 'framer-motion';
 
+const MEALS = {
+    BREAKFAST : 0,
+    LUNCH : 1,
+    DINNER : 2,
+    MORNING_SNACK : 3,
+    AFTERNOON_SNACK : 4
+}
+
+const MealPlanState = {
+    meals: [],
+    selectedMeal : ""
+}
 
 const MealPlanPage = () => {
-    const [meals, setMeals] = useState([]);
+    const [state, setState] = useState(MealPlanState);
+    const {meals, selectedMeal} = state;
+
+    function handleSwitchMeal(meal){
+        setState({...state, selectedMeal: meal})
+    }
 
     function handleGotRequestedMeals(objects){
-        console.log('render meals');
-        setMeals(objects);
+        setState({...state, selectedMeal:"BREAKFAST", meals:objects})
     }
 
     return (
@@ -24,7 +44,7 @@ const MealPlanPage = () => {
                         <MealPlanFormComponent handleRenderMeals={handleGotRequestedMeals}/>
                     </AnimatedTranslateTransition>
                 </div>
-                <div className={'meal-plan-page-graphics'}>
+                <div className={meals.length === 0 ? "meal-plan-page-graphics" : "meal-plan-page-recipes"}>
                      
                     {meals.length === 0 && <AnimatedFadeTransition>
                         <img src={graphics}/>
@@ -33,13 +53,23 @@ const MealPlanPage = () => {
                         </div>
                     </AnimatedFadeTransition>}
 
-                    {meals.length !== 0 && <AnimatedFadeTransition>
-                        <div className={"flex-row flex-space-between"}>
-                            {meals.map(item => {
-                                return <CardRecipeComponent/>
+                    {meals.length !== 0 && <div className={"flex-column-center-x"}>
+                        <div className={"flex-row"}>
+                            {meals[MEALS[selectedMeal]].map(item => {
+                                return <CardRecipeComponent 
+                                            image={item.image} 
+                                            title={item.title}
+                                            description={item.description}
+                                            priceRating={item.priceScore}
+                                            timeRating={item.timeScore}/>
                             })}
-                        </div>    
-                    </AnimatedFadeTransition>}
+                        </div>
+                        <MealSwitcher
+                            handleSwitch={handleSwitchMeal}
+                            numberOfMeals={meals.length}
+                            selectedMeal={selectedMeal}
+                        />
+                    </div>}
 
                 </div>
             </div>

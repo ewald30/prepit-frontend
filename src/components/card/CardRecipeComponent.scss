@@ -5,6 +5,8 @@
     width: 18rem;
     height: 25rem;
     padding: 0 !important;
+    transition: 0.3s;
+
 
     &-header{
 
@@ -31,6 +33,15 @@
     &-footer{
         margin-right: .5rem;
         align-items: flex-end;
+        justify-content: flex-end;
     }
+}
 
+.card:hover{
+    transform: scale(1.1);
+    $box-shadow-light:
+2.8px 3.5px 5.3px rgba(0, 0, 0, 0.14),
+9.4px 11.6px 17.9px rgba(0, 0, 0, 0.1),
+42px 52px 80px rgba(0, 0, 0, 0.1)
+;
 }

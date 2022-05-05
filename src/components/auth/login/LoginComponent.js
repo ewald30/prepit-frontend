@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import { AuthState } from "../../../core/auth";
 import { Link, useNavigate } from "react-router-dom";
 import login from "../api/index";
+import getUserInfo from "../../user/api/index";
 import './LoginComponent.scss';
 import '../../../assets/styles/_shared.scss';
 import logo from '../../../assets/svgs/logo_iconOnly.svg';
@@ -12,7 +13,7 @@ import { setLoggedIn } from "../../../redux/actions/auth";
 import { BarLoader } from "react-spinners";
 
 
-const LoginComponent = (props) => {
+const LoginComponent = () => {
 
     const dispatch = useDispatch();
     const [state, setState] = useState(AuthState);
@@ -30,9 +31,13 @@ const LoginComponent = (props) => {
         
         async function authenticate(){
             try{
-                const token = await login(email, password);                             // get the response from the server
+                const token = await login(email, password);  
+                const userInfo = await getUserInfo(token);                              // get the response from the server
                 setState({...state, pendingAuth: false, authenticationError: null});    // set pending to false and error to null
+                
                 localStorage.setItem('token', token);                                   // set token to localStorage
+                localStorage.setItem('userInfo', JSON.stringify(userInfo));
+
                 dispatch(setLoggedIn(true)); 
                 navigate('/meal-plan')                                                  // redirect to another page
             } catch (err) {

@@ -19,7 +19,9 @@
         //url('./assets/svgs/blobs/blob-6.svg'),
         url('./assets/svgs/blobs/blob-5.svg'),
         url('./assets/svgs/blobs/blob-23.svg'),
-        url('./assets/svgs/blobs/blob-8.svg');
+        url('./assets/svgs/blobs/blob-8.svg');        
+        //url('./assets/svgs/blobs/blob-23.svg');
+
 
         
     background-repeat: space;
@@ -30,7 +32,8 @@
         $background-position-blob5,
         $background_position-blob23,
         $background_position-blob6;
+        //$background_position-blob23_2;
 
-    background-color: #ffffff;
+    background-color: #e7e7e7;
     height: 100%;
   }

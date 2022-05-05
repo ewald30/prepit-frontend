@@ -39,6 +39,19 @@ const MealPlanFormComponent = (props) => {
     const {handleRenderMeals} = props;
 
     useEffect(() => {
+        const info = JSON.parse(localStorage.getItem('userInfo'));
+        if (info) {
+            setState({...state, 
+                height:info.height,
+                weight:info.weight,
+                age:info.age,
+                gender: info.gender
+            });
+        }
+        console.log(info);
+    },[]);
+
+    useEffect(() => {
         if (meals){
             handleRenderMeals(meals);
         }
@@ -58,7 +71,7 @@ const MealPlanFormComponent = (props) => {
         }
     }
 
-
+    console.log('age: ', state.age);
 
     return (
         <div className="meal-form generic-container flex-column-center-x">

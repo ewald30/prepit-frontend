@@ -19,10 +19,10 @@ const RatingComponent = (props) => {
         }
         
         setIcons(iconList);
+        // the component wil rerender and will update the list of icons when rating is changed
+        // the list of icons is added to dependencies in order to rerender only if it has changed
+    }, [JSON.stringify(icons), rating]);
 
-    }, [JSON.stringify(icons)]);
-
-    console.log(icons)
 
     return (
         <div>

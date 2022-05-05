@@ -15,6 +15,7 @@ const Header = (props) => {
 
     const handleLogOut = () => {
         localStorage.removeItem('token');
+        localStorage.removeItem('userInfo');
         dispatch(setLoggedIn(false));
         handleAnimation(true);
      }
