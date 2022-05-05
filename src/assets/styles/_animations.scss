@@ -1,0 +1,32 @@
+@import "./shared";
+
+@keyframes background-movement {
+
+    0% {
+        background-position: $background-position-desktop, 
+        $background-position-blob2,
+        //$background-position-blob3,
+        //$background-position-blob4,
+        $background-position-blob5,
+        $background_position-blob23,
+        $background_position-blob6;
+    }
+
+    2%{
+        background-position: -500px -1000px,
+            900px 300px,
+            200px -730px,
+            -600px 820px,
+            -100px 60px;
+    }
+
+    100% {
+        background-position: $background-position-desktop, 
+        $background-position-blob2,
+        //$background-position-blob3,
+        //$background-position-blob4,
+        $background-position-blob5,
+        $background_position-blob23,
+        $background_position-blob6;
+    }
+  }

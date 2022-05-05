@@ -1,0 +1,25 @@
+@import '../../../assets/styles/shared';
+
+.login-page{
+    height: 100%;
+
+    
+    &-body{
+        height: 100%;
+    }
+
+    &-graphics{
+        margin-left: 20rem;
+
+        &-text{
+            margin-top: 1rem;
+        }
+    }
+
+    &-graphics-text{
+        color: #2f2e41 !important;
+        margin-top: 2rem
+    }
+
+
+}
