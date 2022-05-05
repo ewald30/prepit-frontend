@@ -7,4 +7,6 @@ export const MealPlanState = {
     activityType: null,
     goal: '',
     goalTier: 0,
+    loading:false,
+    error: null,
 }

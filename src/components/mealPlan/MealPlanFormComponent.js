@@ -9,7 +9,7 @@ import ruler from '../../assets/svgs/icons/ruler.svg';
 import scale from '../../assets/svgs/icons/calendar-two.svg';
 import logo from '../../assets/svgs/logo_iconOnly.svg';
 import select from '../../assets/svgs/icons/select-o.svg';
-
+import { BarLoader } from "react-spinners";
 
 const GOALS={
     GAIN : "GAIN",
@@ -17,14 +17,20 @@ const GOALS={
 }
 
 const GOAL_TIERS = {
-    TIER1: 1,
-    TIER2: 2,
+    TIER1: "0.25",
+    TIER2: "0.5",
 }
 
 const GENDERS = {
     MALE: "m",
     FEMALE: "f",
     OTHER: "o"
+}
+
+const NUMBER_OF_MEALS = {
+    MEALS_PER_DAY_3 : "3",
+    MEALS_PER_DAY_4 : "4",
+    MEALS_PER_DAY_5 : "5"
 }
 
 const checkedStyle = { 
@@ -34,13 +40,19 @@ const checkedStyle = {
 
 const MealPlanFormComponent = () => {
     const [state, setState] = useState(MealPlanState);
+    const {loading, error} = state;
 
     function generatePlan(){
-        console.log(state);
+        setState({...state, loading: true});
         requestGeneratePlan();
 
         async function requestGeneratePlan(){
-            const response = await generateMealPlan(state);
+            try{
+                const response = await generateMealPlan(state);
+                setState({...state, loading:false, error:null});
+            } catch(err){
+                setState({...state, loading:false, error: err});
+            }
         }
     }
 
@@ -49,7 +61,7 @@ const MealPlanFormComponent = () => {
     return (
         <div className="meal-form generic-container flex-column-center-x">
             <div className={'generic-container-header'} style={{'margin-bottom':'2rem'}}>
-                <img className={'logo-rounded'} src={logo}/>
+                <div className="text-biggest text-accent text-handwriting">Meal Plan</div>
             </div>
 
             <div className={'generic-multiple-option-toggle'}>
@@ -76,12 +88,22 @@ const MealPlanFormComponent = () => {
            </div>
 
            <div className={'generic-select-dropdown'}>
+                <select className={'generic-select-dropdown-select'} onChange={(event) => {setState({...state, activityType:event.target.value})}}>
+                    <option value="" disabled selected>Number of meals</option>
+                    <option value={'SEDENTARY'}>3 meals / day</option>
+                    <option value={'LIGHT_ACTIVITY'}>4 meals / day</option>
+                    <option value={'MODERATE_ACTIVITY'}>5 meals / day</option>
+                </select>
+                <img src={select} className={"generic-select-dropdown-icon-img"}/>
+           </div>
+
+           <div className={'generic-select-dropdown'}>
                 <select className={'generic-select-dropdown-select'} value={state.activityType} onChange={(event) => {setState({...state, activityType:event.target.value})}}>
                     <option value="" disabled selected>Select activity type</option>
                     <option value={'SEDENTARY'}>Sedentary</option>
-                    <option value={'LIGHT_ACTIVITY'}>Lightly active</option>
-                    <option value={'MODERATE_ACTIVITY'}>Moderately active</option>
-                    <option value={'ABOVE_AVERAGE_ACTIVITY'}>Above average active</option>
+                    <option value={'LIGHT_ACTIVITY'}>Light activity</option>
+                    <option value={'MODERATE_ACTIVITY'}>Moderate activity</option>
+                    <option value={'ABOVE_AVERAGE_ACTIVITY'}>Above average activity</option>
                     <option value={'VERY_ACTIVE'}>Very active</option>
                 </select>
                 <img src={select} className={"generic-select-dropdown-icon-img"}/>
@@ -106,6 +128,8 @@ const MealPlanFormComponent = () => {
             <div className={'generic-container-action flex-column-center-y flex-column-center-x'}>
                     <button className={'generic-container-action-button button-primary text-bigger'} style={{'margin-top':'2rem'}} onClick={generatePlan}>Generate</button>
             </div>
+
+            {loading && <BarLoader width={150} height={5} color={'#29474A'} loading={loading} />}
             
         </div>
     )
