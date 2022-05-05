@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import '../../assets/styles/_shared.scss';
 import './MealPlanFormComponent.scss';
 import { MealPlanState } from "../../core/mealPlan";
@@ -27,20 +27,22 @@ const GENDERS = {
     OTHER: "o"
 }
 
-const NUMBER_OF_MEALS = {
-    MEALS_PER_DAY_3 : 3,
-    MEALS_PER_DAY_4 : 4,
-    MEALS_PER_DAY_5 : 5
-}
 
 const checkedStyle = { 
     "color" : "white",
     "background-color": "#29474a",
 } 
 
-const MealPlanFormComponent = () => {
+const MealPlanFormComponent = (props) => {
     const [state, setState] = useState(MealPlanState);
-    const {loading, error} = state;
+    const {loading, error, meals} = state;
+    const {handleRenderMeals} = props;
+
+    useEffect(() => {
+        if (meals){
+            handleRenderMeals(meals);
+        }
+    },[meals])
 
     function generatePlan(){
         setState({...state, loading: true});
@@ -49,9 +51,9 @@ const MealPlanFormComponent = () => {
         async function requestGeneratePlan(){
             try{
                 const response = await generateMealPlan(state);
-                setState({...state, loading:false, error:null});
+                setState({...state, meals:response, loading:false, error:null});
             } catch(err){
-                setState({...state, loading:false, error: err});
+                setState({...state, meals:null, loading:false, error: err});
             }
         }
     }
@@ -88,11 +90,11 @@ const MealPlanFormComponent = () => {
            </div>
 
            <div className={'generic-select-dropdown'}>
-                <select className={'generic-select-dropdown-select'} onChange={(event) => {setState({...state, activityType:event.target.value})}}>
+                <select className={'generic-select-dropdown-select'} onChange={(event) => {setState({...state, numberOfMeals:event.target.value})}}>
                     <option value="" disabled selected>Number of meals</option>
-                    <option value={'SEDENTARY'}>3 meals / day</option>
-                    <option value={'LIGHT_ACTIVITY'}>4 meals / day</option>
-                    <option value={'MODERATE_ACTIVITY'}>5 meals / day</option>
+                    <option value={3}>3 meals / day</option>
+                    <option value={4}>4 meals / day</option>
+                    <option value={5}>5 meals / day</option>
                 </select>
                 <img src={select} className={"generic-select-dropdown-icon-img"}/>
            </div>

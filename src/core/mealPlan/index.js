@@ -8,5 +8,6 @@ export const MealPlanState = {
     goal: '',
     goalTier: 0,
     loading:false,
-    error: nu,
+    error: null,
+    meals: null
 }
