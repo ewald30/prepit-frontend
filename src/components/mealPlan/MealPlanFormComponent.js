@@ -63,7 +63,8 @@ const MealPlanFormComponent = (props) => {
 
         async function requestGeneratePlan(){
             try{
-                const response = await generateMealPlan(state);
+                const token = localStorage.getItem('token');
+                const response = await generateMealPlan(state, token);
                 setState({...state, meals:response, loading:false, error:null});
             } catch(err){
                 setState({...state, meals:null, loading:false, error: err});
