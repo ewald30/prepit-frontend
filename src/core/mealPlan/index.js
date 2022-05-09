@@ -1,4 +1,4 @@
-export const MealPlanState = {
+export const MealPlanComponentState = {
     userInfo: null,
     height : null,
     weight : null,
@@ -11,4 +11,11 @@ export const MealPlanState = {
     loading:false,
     error: null,
     meals: null
+}
+
+export const MealPlanPageState = {
+    meals: [],
+    selectedMeal : "",
+    selectedRecipe : null,
+    modalOpen: false,
 }

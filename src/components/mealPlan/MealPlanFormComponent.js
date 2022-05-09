@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import '../../assets/styles/_shared.scss';
 import './MealPlanFormComponent.scss';
-import { MealPlanState } from "../../core/mealPlan";
+import { MealPlanComponentState } from "../../core/mealPlan";
 import generateMealPlan from "../../api/mealPlan/mealPlanApi";
 
 import profile from '../../assets/svgs/icons/profile.svg';
@@ -34,7 +34,7 @@ const checkedStyle = {
 } 
 
 const MealPlanFormComponent = (props) => {
-    const [state, setState] = useState(MealPlanState);
+    const [state, setState] = useState(MealPlanComponentState);
     const {loading, error, meals} = state;
     const {handleRenderMeals} = props;
 

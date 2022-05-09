@@ -9,7 +9,8 @@ import graphics from'../../assets/svgs/illustrations/undraw_barbeque.svg';
 import AnimatedTranslateTransition from '../../components/utils/AnimatedTranslateTransition';
 import AnimatedFadeTransition from '../../components/utils/AnimatedFadeTransition';
 import CardRecipeComponent from '../../components/card/CardRecipeComponent';
-import { m } from 'framer-motion';
+import { MealPlanPageState } from '../../core/mealPlan';
+import MealModal from '../../components/mealModal/MealModal';
 
 const MEALS = {
     BREAKFAST : 0,
@@ -19,14 +20,10 @@ const MEALS = {
     AFTERNOON_SNACK : 4
 }
 
-const MealPlanState = {
-    meals: [],
-    selectedMeal : ""
-}
 
 const MealPlanPage = () => {
-    const [state, setState] = useState(MealPlanState);
-    const {meals, selectedMeal} = state;
+    const [state, setState] = useState(MealPlanPageState);
+    const {meals, selectedMeal, selectedRecipe, modalOpen} = state;
 
     function handleSwitchMeal(meal){
         setState({...state, selectedMeal: meal})
@@ -56,12 +53,15 @@ const MealPlanPage = () => {
                     {meals.length !== 0 && <div className={"flex-column-center-x"}>
                         <div className={"flex-row"}>
                             {meals[MEALS[selectedMeal]].map(item => {
-                                return <CardRecipeComponent 
+                                return <div onClick={() => {setState({...state, selectedRecipe: item, modalOpen: true})}}>
+                                            <CardRecipeComponent 
                                             image={item.image} 
                                             title={item.title}
                                             description={item.description}
                                             priceRating={item.priceScore}
-                                            timeRating={item.timeScore}/>
+                                            timeRating={item.timeScore}
+                                            />
+                                        </div>
                             })}
                         </div>
                         <MealSwitcher
@@ -73,6 +73,7 @@ const MealPlanPage = () => {
 
                 </div>
             </div>
+            {modalOpen && <MealModal open={modalOpen} item={selectedRecipe} onClose={() => setState({...state, modalOpen: false})}/>}
         </div>
     )
 }

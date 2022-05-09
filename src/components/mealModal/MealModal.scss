@@ -1,0 +1,63 @@
+@import '../../assets/styles/shared';
+
+.meal-modal{
+    width: 100%;
+    border-radius: $border-radius-rounder;
+
+    &-left{
+        margin-top: -50px;
+        margin-bottom: -50px;
+        margin-left: -50px;
+        background-color: #f7f8fa;
+        border-radius: $border-radius-rounder;
+
+        &-image{
+            padding: 2rem;
+        }
+
+        img{
+            width: 300px;
+            border-radius: $border-radius-rounder;
+        }
+    }
+
+    &-right{
+        overflow-y: scroll;
+        height: 640px;
+
+        margin-left: 2rem;
+
+        &-title{
+            margin-bottom: 2rem;
+        }
+
+        &-description{
+            margin-bottom: 2rem;
+        }
+
+        &-instructions{
+            margin-bottom: 2rem;
+        }
+
+        &-ingredients{
+            margin-bottom: 2rem;
+
+        }
+
+        &-ingredient{
+            margin-bottom: 0.3rem;
+            margin-left: 1rem;
+        }
+
+        &-nutrition{
+            margin-bottom: 2rem;
+        }
+
+        &-nutrition-info{
+            margin-bottom: 0.3rem;
+            margin-left: 1rem;
+        }
+
+    }
+
+}
