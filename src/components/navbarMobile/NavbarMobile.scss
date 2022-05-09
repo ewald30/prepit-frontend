@@ -1,0 +1,38 @@
+@import '../../assets/styles/shared';
+
+.overlay-navbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba($color: #3d3d3d, $alpha: .7);
+    z-index: 1000;
+    backdrop-filter: blur(5px); // This be the blur
+
+}
+
+
+.mobile-navbar{
+    padding:20px;
+    padding-right: 80px;
+    border-radius: $border-radius-rounder;
+    position: fixed;
+    top: 300px;
+    right:-250px;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    z-index: 1000;
+    width: 300px;
+    box-shadow: $box-shadow-light;
+
+    &-close{
+        background-color: white;
+        border: none;
+        text-align: right;
+        position:fixed;
+        left: 5%;
+        bottom: 75%;
+        border-radius: $border-radius-rounder;
+    }
+}

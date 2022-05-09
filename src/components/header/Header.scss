@@ -1,5 +1,6 @@
 @import '../../assets/styles/shared';
 
+
 .header{
     position: fixed;
     top: 0;
@@ -18,7 +19,17 @@
         &-auth{
             width: 100%;
         }
+
+        &-mobile{
+            display: none;
+        }
         
+    }
+
+    &-navbar-content{
+        display:flex;
+        flex-direction: column;
+
     }
 
 }
@@ -26,3 +37,94 @@
 #header-logo{
     width: 10rem;
 }
+
+@media (max-width: $media-breakpoint-width-laptop) {
+    .header{
+        justify-content: space-around !important;
+        
+        &-left{
+            margin-left:0;
+        }
+
+        &-right{
+            width: 60%;
+        }
+    }
+}
+
+@media (max-width: $media-breakpoint-width-tablet-large) {
+    .header{
+        justify-content: space-around !important;
+
+        &-left{
+            margin-left:0;
+        }
+
+        &-right{
+            //width: 70%;
+        }
+    }
+}
+
+@media (max-width: $media-breakpoint-width-tablet-small) {
+
+    #header-logo{
+        width: 8rem;
+    }
+
+    .header{
+
+        &-right{
+            width: 65%;
+        }
+    }
+}
+
+@media (max-width: $media-breakpoint-width-phone-extra-large) {
+
+    #header-logo{
+        width: 6rem;
+    }
+
+    .header{
+
+        &-left{
+            margin-right:1rem;
+        }
+
+        &-right{
+            margin-left: 0;
+            width: 70%;
+            margin-right: 0;
+        }
+    }
+}
+
+@media (max-width: $media-breakpoint-width-phone-large) {
+    .header{
+        justify-content: space-between;
+
+        &-left{
+            margin-left: 2rem;
+        }
+
+        &-right{
+            justify-content: flex-end !important; 
+            align-items: center !important;
+
+            &-auth{
+                display: none!important;
+            }
+
+            &-mobile{
+                display: block;
+                margin-right:2rem;
+                z-index: 10001;
+                img{
+                    width:2rem;
+                }
+            }
+        }
+    }
+}
+

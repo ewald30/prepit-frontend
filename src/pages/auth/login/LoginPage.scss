@@ -23,3 +23,50 @@
 
 
 }
+
+@media (max-height: $media-breakpoint-height-900px) {
+    .login-page-graphics{
+        
+        img{
+            width:600px;
+        }
+
+    }
+}
+
+@media (max-height: $media-breakpoint-height-835px) {
+    .login-page-graphics{
+        
+        img{
+            width:550px;
+        }
+
+    }
+}
+
+
+
+
+@media (max-width: $media-breakpoint-width-laptop) {
+    .login-page-graphics {
+        margin-left:0 ;
+    }
+}
+
+@media (max-width: $media-breakpoint-width-tablet-large) {
+    .login-page-graphics {
+        margin-left:0 ;
+        img{
+            width: 550px;
+        }
+    }
+}
+
+@media (max-width: $media-breakpoint-width-tablet-medium) {
+    .login-page-graphics {
+        display:none;
+    }
+
+}
+
+

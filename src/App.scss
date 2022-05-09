@@ -5,7 +5,11 @@
 .app{
     background: rgba(255, 255, 255, 0.01); // Make sure this color has an opacity of less than 1
     backdrop-filter: blur(70px); // This be the blur
+
     height: 100%;
+        background-repeat: no-repeat;
+    background-attachment: fixed;
+
 }
 
 .app-animated{
@@ -22,9 +26,10 @@
         url('./assets/svgs/blobs/blob-8.svg');        
         //url('./assets/svgs/blobs/blob-23.svg');
 
-
-        
-    background-repeat: space;
+        background-repeat: no-repeat;
+    background-attachment: fixed;
+    
+    background-size: cover;
     background-position: $background-position-desktop, 
         $background-position-blob2,
         //$background-position-blob3,
@@ -33,7 +38,9 @@
         $background_position-blob23,
         $background_position-blob6;
         //$background_position-blob23_2;
-
+    height:100%;
     background-color: #e7e7e7;
-    height: 100%;
+    background-size:contain;
+
+
   }

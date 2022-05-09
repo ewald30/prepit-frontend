@@ -140,6 +140,16 @@
             @extend .flex-column;
             justify-content: flex-start;
         }
+
+        &-end-x{
+            @extend .flex-column;
+            align-items: flex-end;
+        }
+
+        &-end-y{
+            @extend .flex-column;
+            justify-content: flex-end;
+        }
     }
 
     &-row{
@@ -312,7 +322,6 @@ input:-moz-placeholder {
     background-color: #fff;
     border-radius: $border-radius-rounder;
     padding:2rem;
-    margin-left: 3rem;
     box-shadow: $box-shadow-light;
     color: $darkest-grey;
     font-weight: bolder;

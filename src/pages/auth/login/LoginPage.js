@@ -9,7 +9,7 @@ import AnimatedTranslateTransition from '../../../components/utils/AnimatedTrans
 const LoginPage = () => {
     return (
         <div className="login-page">
-                <div className={'flex-space-around flex-row-center-y login-page-body'}>
+                <div className='flex-space-around flex-row-center-y login-page-body'>
                     <div className='login-page-form'>
                             <AnimatedTranslateTransition>
                                 <LoginComponent/>
