@@ -9,7 +9,7 @@ export const getAuthHeader = (token) => {
     }
 }
 
-const BASE_URL = process.env.NODE_ENV === 'development' ? 'http://localhost:8080/PrepIt' : 'https://prepit-backend-deploy.herokuapp.com/PrepIt';
+const BASE_URL = process.env.REACT_APP_API_ENV=== 'development' ? 'http://localhost:8080/PrepIt' : 'https://prepit-backend-deploy.herokuapp.com/PrepIt';
 
 // Auth
 export const LOGIN_URL = `${BASE_URL}/auth/login`;
