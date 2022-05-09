@@ -21,7 +21,7 @@ const LoginComponent = () => {
     const navigate = useNavigate();
 
     function handleLogin(){
-        console.log("NODE_ENV: ", process.env.NODE_ENV)
+        console.log("NODE_ENV: ", process)
 
         setState({pendingAuth: true});
         let canceled = false;
