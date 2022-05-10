@@ -7,6 +7,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setLoggedIn } from '../../redux/actions/auth';
 import NavbarMobile from '../navbarMobile/NavbarMobile';
 import menuIcon from '../../assets/svgs/icons/menu.svg';
+import logo from '../../assets/svgs/logo_iconOnly.svg';
+
 
 
 const Header = (props) => {
@@ -28,7 +30,10 @@ const Header = (props) => {
 
     return (
         <header className="header flex-space-between">
-            <div className="header-left">
+            <div className="header-left flex-row flex-space-between">
+                <div className={'header-logo-image'}>
+                    <img className={'logo-rounded'} src={logo}/>
+                </div>
                 <img src={logoTitle} id={'header-logo'}/>
             </div>
 

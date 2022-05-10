@@ -53,9 +53,12 @@ const LoginComponent = () => {
 
     return (
         
-        <div className={'generic-container flex-column-center-x'}>
-            <div className={'generic-container-header'}>
+        <div className={'generic-container flex-column-center-x login-component'}>
+            <div className={'generic-container-header login-component-logo'}>
                 <img className={'logo-rounded'} src={logo}/>
+            </div>
+            <div className="text-big text-accent text-handwriting">
+                Log In
             </div>
 
             <div>

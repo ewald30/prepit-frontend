@@ -37,3 +37,21 @@
     }
 
 }
+
+@media (max-height: $media-breakpoint-height-750px) {
+    .login-component{
+        &-logo{
+            display:none;
+        }
+    }
+}
+
+@media (max-width: $media-breakpoint-width-tablet-large) {
+    .login-component{
+        margin-left: 0px;
+    }
+}
+
+@media (max-width: $media-breakpoint-width-phone-large) {
+    
+}
