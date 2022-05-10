@@ -76,11 +76,11 @@ const LoginComponent = () => {
 
                 <div className={'generic-container-action flex-column-center-y flex-column-center-x'}>
                     <button className={'generic-container-action-button button-primary text-bigger login-component-cta'} onClick={handleLogin}>Login</button>
-                    <div className={'text-dark-grey'}>Forgot password</div>
+                    {/* <div className={'text-dark-grey'}>Forgot password</div> */}
                 </div>
 
 
-                <div className={'generic-container-bottom flex-row-center-x text-accent text-dark-grey'}>
+                <div className={'generic-container-bottom flex-row-center-x text-accent text-dark-grey login-component-bottom-link'}>
                     Don't have an account? <Link className={'link generic-container-bottom-link'} to="/auth/register">Register</Link>
                 </div>
             </div>

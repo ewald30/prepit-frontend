@@ -23,5 +23,28 @@
 @media (max-width: $media-breakpoint-width-phone-medium){
     .register-component{
         box-shadow: none!important;
+
+        &-logo{
+            img{
+                width:120px;
+                height:120px;
+            }
+            margin-bottom:-2rem;
+        }
+
+        &-cta{
+            margin-top: -2rem;
+        }
     }    
+}
+
+@media (max-height: $media-breakpoint-height-500px){
+    .register-component{
+        
+        &-bottom-link{
+            margin-top: 0rem !important;
+            margin-bottom: -2rem !important;
+        }
+    }
+    
 }

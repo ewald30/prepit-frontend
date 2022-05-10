@@ -83,11 +83,11 @@ const RegisterComponent = (props) => {
 
 
                 <div className={'generic-container-action flex-column-center-y flex-column-center-x'}>
-                    <button className={'generic-container-action-button button-primary text-bigger'} onClick={handleRegister}> Register </button>
+                    <button className={'generic-container-action-button button-primary text-bigger register-component-cta'} onClick={handleRegister}> Register </button>
                 </div>
 
 
-                <div className={'generic-container-bottom flex-row-center-x text-accent text-dark-grey'}>
+                <div className={'generic-container-bottom flex-row-center-x text-accent text-dark-grey register-component-bottom-link'}>
                     Have an account? Login <Link className={'link generic-container-bottom-link'} to="/auth/login">here</Link>
                 </div>
 

@@ -67,5 +67,17 @@
         &-cta{
             margin-top: -2rem;
         }
+
     }    
+}
+
+@media (max-height: $media-breakpoint-height-500px){
+    .login-component{
+        
+        &-bottom-link{
+            margin-top: 0rem !important;
+            margin-bottom: -2rem !important;
+        }
+    }
+    
 }
