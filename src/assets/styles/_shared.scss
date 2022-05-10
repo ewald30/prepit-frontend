@@ -423,7 +423,7 @@ input:-moz-placeholder {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba($color: #878787, $alpha: .7);
+    background-color: rgba($color: #383838, $alpha: .7);
     z-index: 1000;
     backdrop-filter: blur(5px); // This be the blur
 
@@ -444,8 +444,8 @@ input:-moz-placeholder {
         border: none;
         text-align: right;
         position:fixed;
-        left: 92%;
-        bottom: 92%;
+        left: 85%;
+        bottom: 90%;
         border-radius: $border-radius-rounder;
     }
 }
