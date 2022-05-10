@@ -7,3 +7,58 @@
         margin-left: 20rem;
     }
 }
+
+@media (max-height: $media-breakpoint-height-900px) {
+    .meal-plan-page-graphics{
+        
+        img{
+            width:600px;
+        }
+
+    }
+}
+
+@media (max-height: $media-breakpoint-height-835px) {
+    .meal-plan-page-graphics{
+        
+        img{
+            width:550px;
+        }
+
+    }
+}
+
+
+
+
+@media (max-width: $media-breakpoint-width-laptop) {
+    .meal-plan-page-graphics {
+        margin-left:0 ;
+    }
+}
+
+@media (max-width: $media-breakpoint-width-tablet-large) {
+    .meal-plan-page-graphics {
+        margin-left:0 ;
+        img{
+            width: 550px;
+        }
+    }
+}
+ 
+@media (max-width: $media-breakpoint-width-tablet-medium) {
+    .meal-plan-page-graphics {
+        display:none;
+    }
+
+}
+
+@media (max-width: $media-breakpoint-width-phone-medium){
+        .meal-plan-page{
+            background-color: white;
+            &-form{
+            width: 100%;
+            height: 100%;
+        }
+    }
+}
