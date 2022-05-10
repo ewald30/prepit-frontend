@@ -43,7 +43,7 @@ const MealPlanPage = () => {
     return (
         <div className="meal-plan-page">
             <div className={'flex-space-around flex-row-center-y meal-plan-page-container'}>
-                <div className='meal-plan-page-form'>
+                <div className='meal-plan-page-form flex-column-center-y'>
                     <AnimatedTranslateTransition>
                         <MealPlanFormComponent handleRenderMeals={handleGotRequestedMeals}/>
                     </AnimatedTranslateTransition>

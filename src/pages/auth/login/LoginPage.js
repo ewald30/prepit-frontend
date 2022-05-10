@@ -18,7 +18,7 @@ const LoginPage = () => {
                     <div className={'login-page-graphics'}> 
                         <AnimatedFadeTransition>
                             <img src={loginGraphic}/>
-                            <div className={'text-big text-center text-bold text-dark-grey login-page-graphics-text'}>
+                            <div className={'text-big text-center text-dark-grey login-page-graphics-text text-bold'}>
                                 Start upgrading your meal prepping game!
                             </div>
                         </AnimatedFadeTransition>

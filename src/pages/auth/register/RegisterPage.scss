@@ -10,6 +10,10 @@
 
     &-graphics{
         margin-left: 20rem;
+        
+        img{
+            display: none;
+        }
 
         &-text{
             margin-top: 1rem;

@@ -10,6 +10,10 @@
 
     &-graphics{
         margin-left: 20rem;
+
+        img{
+            display: none;
+        }
     }
 
 }
@@ -65,7 +69,8 @@
     .meal-plan-page{
 
         &-form{
-            margin-top:6rem;
+            margin-top:5rem;
+            height: 100%;
         }
 
         &-result{
@@ -87,8 +92,10 @@
 
 }
 
-@media (max-width: $media-breakpoint-width-phone-medium){
+@media (max-width: $media-breakpoint-width-phone-large){
         .meal-plan-page{
+            &-form{
+            }
 
     }
 }

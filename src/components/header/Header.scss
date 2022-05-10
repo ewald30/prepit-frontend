@@ -125,6 +125,7 @@
 
     .header{
         justify-content: space-between;
+        overflow-x: hidden;
 
         &-left{
             margin-left: 2rem;
@@ -139,8 +140,14 @@
             }
 
             &-mobile{
+                background-color: $accent;
+                padding: 5px;
+                padding-right: 20px;
+                padding-bottom: 3px;
+                border-radius: 15px;
+                //box-shadow: $box-shadow-light;
                 display: block;
-                margin-right:2rem;
+                margin-right: -2rem;
                 z-index: 10001;
                 img{
                     width:2rem;
