@@ -10,7 +10,7 @@ const LoginPage = () => {
     return (
         <div className="login-page">
                 <div className='flex-space-around flex-row-center-y login-page-body'>
-                    <div className='login-page-form'>
+                    <div className='login-page-form flex-column-end-y'>
                             <AnimatedTranslateTransition>
                                 <LoginComponent/>
                             </AnimatedTranslateTransition>
