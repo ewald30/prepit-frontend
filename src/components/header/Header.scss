@@ -116,6 +116,13 @@
 }
 
 @media (max-width: $media-breakpoint-width-phone-large) {
+
+    #header-logo{
+        // width: 6rem;
+        display: none;
+    }
+
+
     .header{
         justify-content: space-between;
 
@@ -141,9 +148,7 @@
             }
         }
 
-        &-logo-image{
-            display: block;
-        }
+
     }
 }
 

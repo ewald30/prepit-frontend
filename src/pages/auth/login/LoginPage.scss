@@ -75,8 +75,11 @@
 }
 
 @media (max-width: $media-breakpoint-width-phone-medium){
-        .login-page-form{
-        width: 100%;
-        height: 100%;
+        .login-page{
+            background-color: white;
+            &-form{
+            width: 100%;
+            height: 100%;
+        }
     }
 }

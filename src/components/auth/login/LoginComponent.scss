@@ -40,10 +40,9 @@
 
 @media (max-height: $media-breakpoint-height-750px) {
     .login-component{
-        &-logo{
-            display:none;
-        }
-        
+        // &-logo{
+        //     display:none;
+        // }
     }
 }
 
@@ -53,6 +52,8 @@
     }
 }
 
-@media (max-width: $media-breakpoint-width-phone-large) {
-    
+@media (max-width: $media-breakpoint-width-phone-medium){
+    .login-component{
+        box-shadow: none!important;
+    }    
 }
