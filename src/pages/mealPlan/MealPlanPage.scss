@@ -1,6 +1,7 @@
 @import '../../assets/styles/shared';
 
 .meal-plan-page{
+    overflow-y: scroll!important;
     height: 100%;
 
     &-graphics{
@@ -47,18 +48,42 @@
 }
  
 @media (max-width: $media-breakpoint-width-tablet-medium) {
+    .meal-plan-page{
+        flex-direction: column!important;
+        justify-content: flex-start !important;;
+    }
+
     .meal-plan-page-graphics {
         display:none;
+    }
+
+    .meal-plan-page{
+
+        &-form{
+            margin-top:6rem;
+        }
+
+        &-result{
+            margin-top:-2rem;
+            flex-direction: column-reverse!important;
+    
+            &-container{
+                margin-top:2rem;
+                flex-direction: column!important;
+            
+                &-recipe{
+                    margin-top:1rem;
+                    margin-bottom: 1rem;
+                }
+
+            }
+        }
     }
 
 }
 
 @media (max-width: $media-breakpoint-width-phone-medium){
         .meal-plan-page{
-            background-color: white;
-            &-form{
-            width: 100%;
-            height: 100%;
-        }
+
     }
 }

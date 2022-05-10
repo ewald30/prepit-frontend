@@ -50,16 +50,17 @@ const MealPlanPage = () => {
                         </div>
                     </AnimatedFadeTransition>}
 
-                    {meals.length !== 0 && <div className={"flex-column-center-x"}>
-                        <div className={"flex-row"}>
+                    {meals.length !== 0 && <div className={"flex-column-center-x meal-plan-page-result"}>
+                        <div className={"flex-row meal-plan-page-result-container"}>
                             {meals[MEALS[selectedMeal]].map(item => {
-                                return <div onClick={() => {setState({...state, selectedRecipe: item, modalOpen: true})}}>
+                                return <div className={'meal-plan-page-result-container-recipe'} onClick={() => {setState({...state, selectedRecipe: item, modalOpen: true})}}>
                                             <CardRecipeComponent 
                                             image={item.image} 
                                             title={item.title}
                                             description={item.description}
                                             priceRating={item.priceScore}
                                             timeRating={item.timeScore}
+                                            className={'meal-plan-page-result-container-recipe'}
                                             />
                                         </div>
                             })}
@@ -68,6 +69,7 @@ const MealPlanPage = () => {
                             handleSwitch={handleSwitchMeal}
                             numberOfMeals={meals.length}
                             selectedMeal={selectedMeal}
+                            className={'meal-switcher'}
                         />
                     </div>}
 
