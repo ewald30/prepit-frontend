@@ -55,5 +55,17 @@
 @media (max-width: $media-breakpoint-width-phone-medium){
     .login-component{
         box-shadow: none!important;
+
+        &-logo{
+            img{
+                width:120px;
+                height:120px;
+            }
+            margin-bottom:-2rem;
+        }
+
+        &-cta{
+            margin-top: -2rem;
+        }
     }    
 }

@@ -1,0 +1,27 @@
+@import '../../../assets/styles/shared';
+
+
+.register-component{
+    margin-left: 3rem;
+    
+}
+
+@media (max-height: $media-breakpoint-height-750px) {
+    .register-component{
+        // &-logo{
+        //     display:none;
+        // }
+    }
+}
+
+@media (max-width: $media-breakpoint-width-tablet-large) {
+    .register-component{
+        margin-left: 0px;
+    }
+}
+
+@media (max-width: $media-breakpoint-width-phone-medium){
+    .register-component{
+        box-shadow: none!important;
+    }    
+}

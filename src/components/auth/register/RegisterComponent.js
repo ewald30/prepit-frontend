@@ -9,6 +9,7 @@ import logo from '../../../assets/svgs/logo_iconOnly.svg';
 import { RegisterState } from "../../../core/auth";
 import { register } from "../api";
 import { BarLoader } from "react-spinners";
+import './RegisterComponent.scss';
 
 
 
@@ -50,8 +51,8 @@ const RegisterComponent = (props) => {
 
 
     return (
-        <div className={'generic-container flex-column-center-x flex-space-between'}>
-            <div className={'generic-container-header'}>
+        <div className={'generic-container flex-column-center-x flex-space-between register-component'}>
+            <div className={'generic-container-header register-component-logo'}>
                 <img className={'logo-rounded'} src={logo}/>
             </div>
 
@@ -86,7 +87,7 @@ const RegisterComponent = (props) => {
                 </div>
 
 
-                <div className={'generic-container-bottom flex-row-center-x text-accent text-dark-grey'} style={{'margin-bottom':'2rem'}}>
+                <div className={'generic-container-bottom flex-row-center-x text-accent text-dark-grey'}>
                     Have an account? Login <Link className={'link generic-container-bottom-link'} to="/auth/login">here</Link>
                 </div>
 

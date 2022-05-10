@@ -26,7 +26,7 @@ const RegisterPage = () => {
     return (
         <div className="register-page">
                 <div className={'flex-space-around flex-row-center-y login-page-body'}>
-                    <div className='login-page-form'>
+                    <div className='register-page-form flex-column-center-y'>
                         <AnimatedTranslateTransition>
                             <RegisterComponent handleModalEvent={handleModalEvent} />
                         </AnimatedTranslateTransition>
