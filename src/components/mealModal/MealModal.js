@@ -30,7 +30,7 @@ export default function MealModal(props) {
                         {item.priceScore && <MealModalInfo icon={dollar} label={'Price score'} info={`${item.priceScore} / 5`}/>}
                         {item.kcalories && <MealModalInfo icon={chart} label={"Calories"} info={item.kcalories}/>}
                         {item.serving && <MealModalInfo icon={bowl} label={'Serving'} info={item.serving}/>} 
-                        {item.type && <MealModalInfo icon={tag} label={'Type'} info={item.type}/>}
+                        {/* {item.type && <MealModalInfo icon={tag} label={'Type'} info={item.type}/>} */}
                     </div>
                 </div>
                 <div className='meal-modal-right'>

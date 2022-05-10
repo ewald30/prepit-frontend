@@ -9,3 +9,23 @@
     background-color:white !important;
     box-shadow: $box-shadow-light !important;
 }
+
+.save-user-info-modal{
+    img{
+        height:200px;
+        width: 300px;
+        margin-bottom: 2rem;
+    }
+
+    &-buttons{
+        margin-top: 2rem;
+        width: 100%;
+    }
+}
+
+@media (max-width: $media-breakpoint-width-phone-medium){
+    .save-user-info-modal{
+        width: 200px;
+    }
+}
+

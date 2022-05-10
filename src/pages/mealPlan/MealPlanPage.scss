@@ -4,9 +4,14 @@
     overflow-y: scroll!important;
     height: 100%;
 
+    &-container{
+        height: 100%;
+    }
+
     &-graphics{
         margin-left: 20rem;
     }
+
 }
 
 @media (max-height: $media-breakpoint-height-900px) {
@@ -48,7 +53,7 @@
 }
  
 @media (max-width: $media-breakpoint-width-tablet-medium) {
-    .meal-plan-page{
+    .meal-plan-page-container{
         flex-direction: column!important;
         justify-content: flex-start !important;;
     }

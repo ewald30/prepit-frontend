@@ -1,5 +1,4 @@
 export const MealPlanComponentState = {
-    userInfo: null,
     height : null,
     weight : null,
     gender: '',
@@ -10,7 +9,10 @@ export const MealPlanComponentState = {
     goalTier: 0,
     loading:false,
     error: null,
-    meals: null
+    id: 0,
+    saveUser: null,
+    overwrittenValues: false,
+    modalOpen: false,
 }
 
 export const MealPlanPageState = {

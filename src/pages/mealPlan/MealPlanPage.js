@@ -30,12 +30,19 @@ const MealPlanPage = () => {
     }
 
     function handleGotRequestedMeals(objects){
+        const container = document.querySelector('.meal-plan-page');
+        console.log(container);
+        container.scrollBy({
+            top: 700,
+            left: 0,
+            behavior: 'smooth'
+          });
         setState({...state, selectedMeal:"BREAKFAST", meals:objects})
     }
 
     return (
         <div className="meal-plan-page">
-            <div className={'flex-space-around flex-row-center-y meal-plan-page'}>
+            <div className={'flex-space-around flex-row-center-y meal-plan-page-container'}>
                 <div className='meal-plan-page-form'>
                     <AnimatedTranslateTransition>
                         <MealPlanFormComponent handleRenderMeals={handleGotRequestedMeals}/>
@@ -60,7 +67,6 @@ const MealPlanPage = () => {
                                             description={item.description}
                                             priceRating={item.priceScore}
                                             timeRating={item.timeScore}
-                                            className={'meal-plan-page-result-container-recipe'}
                                             />
                                         </div>
                             })}
