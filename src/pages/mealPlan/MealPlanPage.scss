@@ -1,6 +1,7 @@
 @import '../../assets/styles/shared';
 
 .meal-plan-page{
+    overflow-x: hidden;
     overflow-y: scroll!important;
     height: 100%;
 
@@ -69,7 +70,7 @@
     .meal-plan-page{
 
         &-form{
-            margin-top:5rem;
+            margin-top:6rem;
             height: 100%;
         }
 

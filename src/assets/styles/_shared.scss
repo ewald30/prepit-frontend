@@ -59,6 +59,10 @@
         font-size: 1.5rem
     }
 
+    &-bigger-2{
+        font-size: 1.7rem
+    }
+
     &-big{
         font-size: 2rem;
     }
@@ -319,6 +323,7 @@ input:-moz-placeholder {
 
 
 .generic-container{
+    margin-top: 1rem;
     background-color: #fff;
     border-radius: $border-radius-rounder;
     padding:2rem;
@@ -337,6 +342,7 @@ input:-moz-placeholder {
         
         &-link{
             margin-left: .2rem;
+            margin-bottom: 1rem;
         }
     }
 
