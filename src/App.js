@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import './App.scss';
 import LoginPage from './pages/auth/login/LoginPage';
 import RegisterPage from './pages/auth/register/RegisterPage';
@@ -20,6 +20,7 @@ function App() {
             <Route path="/auth/login" element={ <LoginPage/> } />
             <Route path="/auth/register" element={ <RegisterPage/> } />
             <Route path="/meal-plan" element={ <MealPlanPage/> } />
+            <Route path='/' element={<Navigate to='/auth/login' replace />} />
           </Routes>
 
         </div>

@@ -35,7 +35,7 @@ const RegisterPage = () => {
                         <AnimatedFadeTransition>
                             <img src={registerGraphic}/>
                             <div className={'text-big text-center text-bold text-dark-grey login-page-graphics-text'}>
-                                Unlock the full experience of meal prepping!
+                                Unlock the full experience of meal preparation!
                             </div>
                         </AnimatedFadeTransition>
                     </div>
