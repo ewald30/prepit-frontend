@@ -10,20 +10,31 @@ import { RegisterState } from "../../../core/auth";
 import { register } from "../api";
 import { BarLoader } from "react-spinners";
 import './RegisterComponent.scss';
+import { validateRegisterForm } from "../../../resources/validation/registerValidation";
+import RegisterPasswordRequirements from "./RegisterPasswordRequirements";
 
 
 
 const RegisterComponent = (props) => {
     const [state, setState] = useState(RegisterState);
+    const [formErrors, setFormErrors] = useState({});
     const {pendingAuth} = state;
 
     function handleRegister() {
+        // check to see if there are any validation errors
+        const errors = validateRegisterForm(state)
+        setFormErrors(errors);
+
+        // if there are errors, stop the registration process
+        if(Object.keys(errors).length !== 0){
+            return;
+        }
+
         setState({...state, pendingAuth: true});
 
-        const name = state.fullName.split(" ");
-        const firstName = name[0];
-        const lastName = name[1];
-
+        const nameList = state.fullName.trim().split(/\s+/); // Works for multiple spaces
+        const firstName = nameList[0];
+        const lastName = nameList[1];
         let canceled = false;
 
 
@@ -60,23 +71,28 @@ const RegisterComponent = (props) => {
                 <div className={'generic-container-body'}>
 
                     <div className={'generic-container-body-email input-icon'}>
-                        <input className={'input'} type={'email'} name={'userEmail'} placeholder={'Full Name'} value={state.fullName} onChange={(event)=>{setState({...state, fullName: event.target.value})}}/>
+                        <input className={formErrors.fullName? 'input input-error' : 'input'} type={'text'} name={'fullname'} placeholder={'Full Name'} value={state.fullName} onChange={(event)=>{setState({...state, fullName: event.target.value})}}/>
                         <img src={userIcon}/>
+                        {formErrors.fullName && <div className="generic-container-error">{formErrors.fullName}</div>}
                     </div>
 
                     <div className={'generic-container-body-email input-icon'}>
-                        <input className={'input'} type={'email'} name={'userEmail'} placeholder={'Email Address'} value={state.email} onChange={(event)=>{setState({...state, email: event.target.value})}}/>
+                        <input className={formErrors.email? 'input input-error' : 'input'}  type={'email'} name={'userEmail'} placeholder={'Email Address'} value={state.email} onChange={(event)=>{setState({...state, email: event.target.value})}}/>
                         <img src={mailIcon}/>
+                        {formErrors.email && <div className="generic-container-error">{formErrors.email}</div>}
                     </div>
 
                     <div className={"input-icon"}>
-                        <input className={'input'} type="password" placeholder={'Password'} value={state.password} onChange={(event)=>{setState({...state, password: event.target.value})}}/>
+                        <input className={(formErrors.password || formErrors.strongPassword)? 'input input-error' : 'input'}  type="password" placeholder={'Password'} value={state.password} onChange={(event)=>{setState({...state, password: event.target.value})}}/>
                         <img className={'input-icon-img'} src={lockIcon}/>
+                        {formErrors.password && <div className="generic-container-error">{formErrors.password}</div>}
+                        <RegisterPasswordRequirements password={state.password}/>
                     </div>
 
                     <div className={"input-icon"}>
-                        <input className={'input'} type="password" placeholder={'Confirm Password'} value={state.passwordConfirmation} onChange={(event)=>{setState({...state, passwordConfirmation: event.target.value})}}/>
+                        <input className={formErrors.passwordConfirmation? 'input input-error' : 'input'}  type="password" placeholder={'Confirm Password'} value={state.passwordConfirmation} onChange={(event)=>{setState({...state, passwordConfirmation: event.target.value})}}/>
                         <img className={'input-icon-img'} src={confirmPassword}/>
+                        {formErrors.passwordConfirmation && <div className="generic-container-error">{formErrors.passwordConfirmation}</div>}
                     </div>
 
                 </div>

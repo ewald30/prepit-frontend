@@ -11,17 +11,26 @@ import userGrey from '../../../assets/svgs/icons/profile.svg';
 import { useDispatch } from "react-redux";
 import { setLoggedIn } from "../../../redux/actions/auth";
 import { BarLoader } from "react-spinners";
+import { validateLoginForm } from "../../../resources/validation/loginValidation";
 
 
 const LoginComponent = () => {
 
     const dispatch = useDispatch();
     const [state, setState] = useState(AuthState);
+    const [formErrors, setFormErrors] = useState({}); 
     const {email, password, pendingAuth, authenticationError} = state;
     const navigate = useNavigate();
 
     function handleLogin(){
-        console.log("NODE_ENV: ", process.env)
+        // check to see if there are any validation errors
+        const errors = validateLoginForm({email, password});
+        setFormErrors(errors);
+
+        // if there are errors, stop the registration process
+        if(Object.keys(errors).length !== 0){
+            return;
+        }
 
         setState({pendingAuth: true});
         let canceled = false;
@@ -61,14 +70,18 @@ const LoginComponent = () => {
             <div>
                 <div className={'generic-container-body'}>
                     <div className={'generic-container-body-email input-icon'}>
-                        <input className={'input'} type={'email'} name={'userEmail'} placeholder={'Username'} value={email} onChange={(event)=>{setState({...state, email: event.target.value})}}/>
+                        <input className={formErrors.email? "input input-error" : "input"} type={'email'} name={'userEmail'} placeholder={'Email'} value={email} onChange={(event)=>{setState({...state, email: event.target.value})}}/>
                         <img src={userGrey}/>
+                        {formErrors.email && <div className="generic-container-error">{formErrors.email}</div>}
+
                     </div>
 
                     <div className={"input-icon"}>
-                        <input className={'input'} type="password" placeholder={'Password'} value={password} onChange={(event)=>{setState({...state, password: event.target.value})}}/>
+                        <input className={formErrors.password? "input input-error" : "input"}  type="password" placeholder={'Password'} value={password} onChange={(event)=>{setState({...state, password: event.target.value})}}/>
                         <img className={'input-icon-img'} src={lockGrey}/>
+                        {formErrors.password && <div className="generic-container-error">{formErrors.password}</div>}
                     </div>
+
                     {authenticationError && <div className={'text-red text-center'}> The email or password is invalid.</div>}
 
 

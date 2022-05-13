@@ -42,7 +42,7 @@ const RegisterPage = () => {
                 </div>
 
                 {isOpen && <Modal open={isOpen} onClose={() => {handleModalOnClose()}}>
-                        <div>
+                        <div className="modal-email-sent flex-column-center-x">
                             <img src={mailbox} />
                             <div style={{'margin-top': '2rem'}} className={'text-bigger text-center text-bold'}> Please check your mailbox to verify your email address</div>
                         </div>

@@ -19,8 +19,13 @@
             margin-top: 1rem;
         }
     }
+}
 
-
+.modal-email-sent{
+    img{
+        height:200px;
+        width: 300px;
+    }
 }
 
 
@@ -43,7 +48,6 @@
 
     }
 }
-
 
 
 
@@ -70,11 +74,18 @@
 }
 
 @media (max-width: $media-breakpoint-width-phone-medium){
-        .register-page{
+    .register-page{
             background-color: white;
             &-form{
             width: 100%;
             height: 100%;
+        }
+    }
+
+    .modal-email-sent{
+        width: 200px;
+        img{
+            height: 150px;
         }
     }
 }
