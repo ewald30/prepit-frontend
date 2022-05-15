@@ -41,13 +41,12 @@ const Header = (props) => {
                 <div className="header-right-auth flex-space-around">
                     {!loggedIn && <Link to="/auth/login" className="link-header" onClick={() => {handleAnimation(true)}}>Log In</Link>}
                     {!loggedIn && <Link to="/auth/register" className="link-header" onClick={() => {handleAnimation(true)}}>Register</Link>}
-
                     {loggedIn && <Link to="/auth/my-profile" className="link-header" onClick={() => {handleAnimation(true)}}>My Profile</Link>}
-                    {loggedIn && <Link to="/auth/login" className="link-header" onClick={handleLogOut}>Log out</Link>}
 
                     {/* <Link to="/browse" className="link-header" onClick={() => {handleAnimation(true)}}>Browse</Link> */}
-                    <Link to="/meal-plan" className="link-header" onClick={() => {handleAnimation(true)}}>Meal plan</Link>
+                    <Link to="/meal/meal-plan" className="link-header" onClick={() => {handleAnimation(true)}}>Meal plan</Link>
                     <Link to="/" className="link-header" onClick={() => {handleAnimation(true)}}>Home</Link>
+                    {loggedIn && <Link to="/auth/login" className="link-header" onClick={handleLogOut}>Log out</Link>}
                 </div>
 
                 <div className="header-right-mobile">
@@ -60,13 +59,12 @@ const Header = (props) => {
                     <div className="header-navbar-content flex-column-end-x">
                         {!loggedIn && <Link to="/auth/login" className="link-header text-bigger" onClick={() => {handleAnimation(true)}}>Log In</Link>}
                         {!loggedIn && <Link to="/auth/register" className="link-header text-bigger" onClick={() => {handleAnimation(true)}}>Register</Link>}
-
                         {loggedIn && <Link to="/auth/my-profile" className="link-header text-bigger" onClick={() => {handleAnimation(true)}}>My Profile</Link>}
-                        {loggedIn && <Link to="/auth/login" className="link-header text-bigger" onClick={handleLogOut}>Log out</Link>}
 
                         {/* <Link to="/browse" className="link-header text-bigger" onClick={() => {handleAnimation(true)}}>Browse</Link> */}
-                        <Link to="/meal-plan" className="link-header text-bigger" onClick={() => {handleAnimation(true)}}>Meal plan</Link>
+                        <Link to="/meal/meal-plan" className="link-header text-bigger" onClick={() => {handleAnimation(true)}}>Meal plan</Link>
                         <Link to="/" className="link-header text-bigger" onClick={() => {handleAnimation(true)}}>Home</Link>
+                        {loggedIn && <Link to="/auth/login" className="link-header text-bigger" onClick={handleLogOut}>Log out</Link>}
 
                     </div>
                 </NavbarMobile>}

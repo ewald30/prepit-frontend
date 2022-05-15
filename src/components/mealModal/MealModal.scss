@@ -61,3 +61,20 @@
     }
 
 }
+
+.meal-save{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    &-button{
+        margin-top: 2rem;
+        width: 50%;
+        background-color: rgba(0, 0, 0, 0) !important;
+        transition: 0.3s;
+    }
+}
+
+.meal-save-button:hover{
+    background-color:$accent !important;
+    color: white !important;
+}

@@ -1,0 +1,20 @@
+@import '../../assets/styles/shared';
+
+.saved-meals{
+    height: 100%;
+
+    &-container{
+        width: 95%!important;
+        height: 600px;
+        overflow-y: scroll;
+
+        &-items{
+            margin-top: 4rem;
+
+        }
+
+ 
+
+        
+    }
+}
