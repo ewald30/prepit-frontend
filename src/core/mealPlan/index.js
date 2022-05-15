@@ -20,4 +20,9 @@ export const MealPlanPageState = {
     selectedMeal : "",
     selectedRecipe : null,
     modalOpen: false,
+    collectionModalOpen: false,
+    collectionCreationModalOpen: false,
+    selectedCollection: null,
+    collections: [],
+    loadingSaveMeal: false
 }

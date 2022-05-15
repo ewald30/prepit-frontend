@@ -6,6 +6,8 @@ import RegisterPage from './pages/auth/register/RegisterPage';
 import Header from './components/header/Header';
 import MealPlanPage from './pages/mealPlan/MealPlanPage';
 import { useState } from 'react';
+import SavedMealsPage from './pages/savedMeals/SavedMealsPage';
+import MyProfile from './pages/myProfile/MyProfilePage';
 
 function App() {
   const [animated, setAnimation] = useState(true);
@@ -19,7 +21,11 @@ function App() {
           <Routes>
             <Route path="/auth/login" element={ <LoginPage/> } />
             <Route path="/auth/register" element={ <RegisterPage/> } />
-            <Route path="/meal-plan" element={ <MealPlanPage/> } />
+            <Route path="/auth/my-profile" element={ <MyProfile/> } />
+
+            <Route path="/meal/meal-plan" element={ <MealPlanPage/> } />
+            <Route path="/meal/saved-meals" element={<SavedMealsPage/>}/>
+
             <Route path='/' element={<Navigate to='/auth/login' replace />} />
           </Routes>
 

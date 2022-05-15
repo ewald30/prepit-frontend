@@ -19,6 +19,17 @@
 
 }
 
+.modal-save-meal{
+    &-collections{
+        height: 470px;
+        overflow-y: scroll;
+    }
+
+    &-buttons{
+        margin-top: 1rem;
+    }
+}
+
 @media (max-height: $media-breakpoint-height-900px) {
     .meal-plan-page-graphics{
         

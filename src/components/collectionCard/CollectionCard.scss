@@ -1,0 +1,58 @@
+@import '../../assets/styles/shared';
+
+.collection-card{
+    width: 340px;
+
+    &-header{
+        &-top{
+
+        }
+
+        &-bottom{
+            width: 100%;
+        }
+    }
+
+    &-footer{
+        margin-top: 1rem;
+
+        &-info{
+            font-weight: 300;
+        }
+    }
+}
+
+.new-collection-card{
+    width: 340px;
+    height: 335.5px;
+    background-color: $light-grey;
+    border-radius: $border-radius-standard;
+    
+    img{
+        width: 150px;
+    }
+}
+
+.collection-card-top-img{
+    border-radius: $border-radius-standard $border-radius-standard 0 0;
+    width: 340px;
+    height: 250px;
+}
+
+.collection-card-bottom-img{
+    width: 110px;
+    height: 80px;
+
+    &-first{
+        border-radius:0 0 0 $border-radius-standard ;
+    }
+
+    &-last{
+        border-radius:0 0 $border-radius-standard 0;
+    }
+}
+
+.collection-blank{
+    margin-bottom: 3px;
+    background-color: $light-grey;
+}

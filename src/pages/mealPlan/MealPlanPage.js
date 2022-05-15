@@ -11,6 +11,12 @@ import AnimatedFadeTransition from '../../components/utils/AnimatedFadeTransitio
 import CardRecipeComponent from '../../components/card/CardRecipeComponent';
 import { MealPlanPageState } from '../../core/mealPlan';
 import MealModal from '../../components/mealModal/MealModal';
+import CollectionsComponent from '../../components/collections/CollectionsComponent';
+import Modal from '../../components/modal/Modal';
+import getCollections from '../../api/myProfile/myProfileApi';
+import { createCollection, saveMealToCollection } from '../../api/collection/CollectionApi';
+import { BeatLoader, ClimbingBoxLoader } from 'react-spinners';
+import CollectionCreateModal from '../../components/collectionCreateModal/CollectionCreateModal';
 
 const MEALS = {
     BREAKFAST : 0,
@@ -23,15 +29,85 @@ const MEALS = {
 
 const MealPlanPage = () => {
     const [state, setState] = useState(MealPlanPageState);
-    const {meals, selectedMeal, selectedRecipe, modalOpen} = state;
+    const {meals, selectedMeal, selectedRecipe, modalOpen, collectionModalOpen, selectedCollection, loadingSaveMeal, collectionCreationModalOpen} = state;
+
+    // CHANGE BACKEND TO RETURN COLLECTION ID!!!!!!!!
+    // pass button for save for collection modal
+    // pass 2 inputs for name and description
+    // if two inputs !== null, change button from save to create
+    // two handlers, one for create one for save? maybe not required since backend is the same
 
     function handleSwitchMeal(meal){
         setState({...state, selectedMeal: meal})
     }
 
+    function handleCreateNewCollection(title, description){
+        setState({...state, collectionCreationModalOpen: false, loadingSaveMeal: true})
+
+        console.log("TITLE, DESCRIPTION", title, description)
+        createNewCollection(title, description);
+
+        async function createNewCollection(title, description){
+            try{
+                const response = await createCollection(title, description);
+                setState({...state, loadingSaveMeal: false, collectionCreationModalOpen: false,})
+                handleGetCollections(selectedRecipe);
+            } catch (error){
+                console.error(error);
+                setState({...state, loadingSaveMeal: false, collectionCreationModalOpen: false,})
+
+            }
+        }
+    }
+
+    function handleSelectCollection(collection){
+        if (!collection){
+            console.log("create new");
+            return;
+        }
+        setState({...state, selectedCollection: collection})
+        console.log("selected: ", collection)
+    }
+
+    function handleGetCollections(meal){
+        
+        // add loading indicator
+        const token =  localStorage.getItem('token');
+        getCollectionsForUser();
+
+
+        async function getCollectionsForUser(){
+            const response = await getCollections(token, 1)
+            setState({...state, collections: response, collectionModalOpen: true, modalOpen: false, selectedRecipe: meal, collectionCreationModalOpen: false})
+
+        }
+    }
+
+    function handleSaveMealToCollection(){
+        const token =  localStorage.getItem('token');
+        setState({...state, loadingSaveMeal: true});
+        saveMeal();
+
+        async function saveMeal(){
+            try{
+                await saveMealToCollection(token, 
+                    selectedCollection.collectionId, 
+                    selectedCollection.name,
+                    selectedCollection.description,
+                    selectedRecipe
+                    )
+
+                setState({...state, loadingSaveMeal: false});
+                handleGetCollections(selectedRecipe);
+            } catch (err) {
+                console.log("error:  ", err);
+                setState({...state, loadingSaveMeal: false});
+            }
+        }
+    }
+
     function handleGotRequestedMeals(objects){
         const container = document.querySelector('.meal-plan-page');
-        console.log(container);
         container.scrollBy({
             top: 700,
             left: 0,
@@ -39,6 +115,8 @@ const MealPlanPage = () => {
           });
         setState({...state, selectedMeal:"BREAKFAST", meals:objects})
     }
+    
+    console.log("loading: ", collectionCreationModalOpen)
 
     return (
         <div className="meal-plan-page">
@@ -65,8 +143,8 @@ const MealPlanPage = () => {
                                             image={item.image} 
                                             title={item.title}
                                             description={item.description}
-                                            priceRating={item.priceScore}
-                                            timeRating={item.timeScore}
+                                            priceRating={item.price_score}
+                                            timeRating={item.time_score}
                                             />
                                         </div>
                             })}
@@ -81,7 +159,26 @@ const MealPlanPage = () => {
 
                 </div>
             </div>
-            {modalOpen && <MealModal open={modalOpen} item={selectedRecipe} onClose={() => setState({...state, modalOpen: false})}/>}
+
+            
+            {modalOpen && <MealModal open={modalOpen} item={selectedRecipe} onClose={() => setState({...state, modalOpen: false})} onSave={handleGetCollections} />}
+            {collectionModalOpen && 
+                <Modal open={collectionModalOpen} onClose={() => setState({...state, collectionModalOpen: false})}>
+                    <div className="modal-save-meal flex-column-center-x">
+                        <div className='modal-save-meal-collections'>
+                            <CollectionsComponent collections={state.collections} 
+                                                    onSelectCollection={handleSelectCollection} 
+                                                    onCreateNewCollection={() => {setState({...state, collectionCreationModalOpen: true})}}
+                                                    selectedCollection={state.selectedCollection}
+                                                    />
+                        </div>
+                        <div className="modal-save-meal-buttons">
+                            {loadingSaveMeal?<BeatLoader width={150} height={5} color={'#29474A'} loading={true} /> : <button className='button-primary' onClick={() => handleSaveMealToCollection()}>Save meal</button>}
+                        </div>
+                    </div>
+                </Modal>}
+
+                {collectionCreationModalOpen && <CollectionCreateModal open={collectionCreationModalOpen} onClose={() => {setState({...state, collectionCreationModalOpen: false})}} onSave={handleCreateNewCollection}/>}
         </div>
     )
 }

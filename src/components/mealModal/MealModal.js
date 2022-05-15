@@ -11,10 +11,10 @@ import './MealModal.scss';
 import MealModalInfo from './MealModalInfo';
 
 export default function MealModal(props) {
-    const {item, onClose, open} = props;
+    const {item, onClose, open, onSave} = props;
     const instructions = item.instructions.split('|');
     const ingredients = item.ingredients.split('|');
-    const nutritionInfo = item.nutritionInfo.split('|');
+    const nutritionInfo = item.nutritions_info.split('|');
 
     return (
         <Modal open={open} onClose={onClose}>
@@ -24,13 +24,16 @@ export default function MealModal(props) {
                         <img src={item.image}/>
                     </div>
                     <div className='meal-modal-left-info'>
-                        {item.prepTime && <MealModalInfo icon={refrigerator} label={'Preparation Time'} info={item.prepTime}/>}
-                        {item.cookTime && <MealModalInfo icon={timer} label={'Cook Time'} info={item.cookTime}/>}
-                        {item.timeScore && <MealModalInfo icon={stopwatch} label={'Time score'} info={`${item.timeScore} / 5`}/>}
-                        {item.priceScore && <MealModalInfo icon={dollar} label={'Price score'} info={`${item.priceScore} / 5`}/>}
-                        {item.kcalories && <MealModalInfo icon={chart} label={"Calories"} info={item.kcalories}/>}
+                        {item.prep_time && <MealModalInfo icon={refrigerator} label={'Preparation Time'} info={item.prep_time}/>}
+                        {item.cook_time && <MealModalInfo icon={timer} label={'Cook Time'} info={item.cook_time}/>}
+                        {item.time_score && <MealModalInfo icon={stopwatch} label={'Time score'} info={`${item.time_score} / 5`}/>}
+                        {item.price_score && <MealModalInfo icon={dollar} label={'Price score'} info={`${item.price_score} / 5`}/>}
+                        {item.calories && <MealModalInfo icon={chart} label={"Calories"} info={item.calories}/>}
                         {item.serving && <MealModalInfo icon={bowl} label={'Serving'} info={item.serving}/>} 
                         {/* {item.type && <MealModalInfo icon={tag} label={'Type'} info={item.type}/>} */}
+                        <div className="meal-save">
+                            <button className={'button-transparent text-normal meal-save-button'} onClick={() => {onSave(item)}}>Save</button>
+                        </div>
                     </div>
                 </div>
                 <div className='meal-modal-right'>

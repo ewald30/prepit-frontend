@@ -1,0 +1,43 @@
+@import '../../assets/styles/shared';
+
+.my-profile{
+    overflow-y: scroll;
+    height: 100%;
+
+    &-container{
+        width: 90% !important;
+    }
+
+}
+
+.profile{
+    width: 100%;
+
+    &-info{
+        width: 210px;
+    }
+
+    margin-bottom: 3rem;
+}
+
+.collections{
+    height: 400px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+// @media (max-width: 1190px){
+//     .my-profile{
+//         &-container{
+//             margin-top: 31rem !important;
+//         }
+//     }
+// }
+
+// @media (max-width: 768px){
+//     .my-profile{
+//         &-container{
+//             margin-top: 55rem !important;
+//         }
+//     }
+// }

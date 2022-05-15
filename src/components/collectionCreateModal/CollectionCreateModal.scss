@@ -1,0 +1,26 @@
+.create-collection-modal{
+
+    &-image{
+        margin-right: 2rem;
+        img{
+            width: 300px;
+        }
+    }
+
+    &-info{
+        align-content: space-between;    
+
+
+        &-title{
+            margin-bottom: 1rem !important;
+        }
+    
+        &-description{
+            margin-bottom: 1rem;
+        }
+    
+        &-save{
+            margin-bottom: 1rem;
+        }
+    }
+}

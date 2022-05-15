@@ -1,0 +1,7 @@
+@import '../../assets/styles/shared';
+
+.collection-card-selected{
+    border: 3px solid $darker-grey;
+    border-radius: $border-radius-standard;
+    height: 333px;
+}

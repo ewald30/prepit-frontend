@@ -17,7 +17,6 @@ const CardRecipeComponent = (props) => {
 
 
     return (
-        <AnimatedFadeTransition>
             <div className={'generic-container card flex-column-start-y'}>
                 <div className={"card-header"}>
                     <img className={"card-header-img"} src={image} />
@@ -29,17 +28,16 @@ const CardRecipeComponent = (props) => {
                         <div className={"card-body-description text-normal"} style={{'margin-top':'15px'}}>{description.slice(0, 80) + '...'}</div>
                     </div>
 
-                    <div className={"card-footer flex-column"}>
-                        <div className={"card-footer-time-rating"}>
-                            <RatingComponent rating={timeRating} iconGrey={stopwatch} iconColor={stopwatch_colored} />
+                        <div className={"card-footer flex-column"}>
+                            <div className={"card-footer-time-rating"}>
+                                <RatingComponent rating={timeRating} iconGrey={stopwatch} iconColor={stopwatch_colored} />
+                            </div>
+                            <div className={"card-footer-price-rating"}>
+                                <RatingComponent rating={priceRating} iconGrey={dollar} iconColor={dollar_colored} />
+                            </div>
                         </div>
-                        <div className={"card-footer-price-rating"}>
-                            <RatingComponent rating={priceRating} iconGrey={dollar} iconColor={dollar_colored} />
-                        </div>
-                    </div>
                 </div>
             </div>
-        </AnimatedFadeTransition>
     )
 }
 

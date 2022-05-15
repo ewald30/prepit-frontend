@@ -50,7 +50,7 @@ const LoginComponent = () => {
                 localStorage.setItem('userInfo', JSON.stringify(userInfo));
 
                 dispatch(setLoggedIn(true)); 
-                navigate('/meal-plan')                                                  // redirect to another page
+                navigate('/meal/meal-plan')                                                  // redirect to another page
             } catch (err) {
                 setState({...state, pendingAuth: false, authenticationError: err});
             }
