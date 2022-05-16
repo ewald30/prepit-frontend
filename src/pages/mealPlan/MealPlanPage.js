@@ -73,11 +73,13 @@ const MealPlanPage = () => {
         
         // add loading indicator
         const token =  localStorage.getItem('token');
+        const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+
         getCollectionsForUser();
 
 
         async function getCollectionsForUser(){
-            const response = await getCollections(token, 1)
+            const response = await getCollections(token, userInfo.id)
             setState({...state, collections: response, collectionModalOpen: true, modalOpen: false, selectedRecipe: meal, collectionCreationModalOpen: false})
 
         }

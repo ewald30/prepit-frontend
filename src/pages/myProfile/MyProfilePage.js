@@ -27,7 +27,7 @@ const navigate = useNavigate();
         getCollectionsForUser();
 
         async function getCollectionsForUser(){
-            const response = await getCollections(token, 1)
+            const response = await getCollections(token, userInfo.id);
             setState({...state, 
                 collections: response,
                 height:userInfo.height,
