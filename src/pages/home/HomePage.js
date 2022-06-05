@@ -14,8 +14,8 @@ const HomePage = (props) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        //const images = importAll(require.context('../../assets/stockPhotos', false, /\.(png|jpe?g|svg)$/));
-        //setImages(getRandomImages(Object.values(images)));
+        const images = importAll(require.context('../../assets/stockPhotos', false, /\.(png|jpe?g|svg)$/));
+        setImages(getRandomImages(Object.values(images)));
         setLoading(false)
         console.log("IMAGES", images);
     }, [])
