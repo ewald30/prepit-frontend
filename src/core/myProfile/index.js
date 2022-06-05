@@ -6,8 +6,9 @@ const MyProfileState = {
     weight: null,
     height: null,
     gender: null,
-    collections: [],
-    collectionCreationModalOpen: false
+    timePriceMultiplier: 0,
+    accuracyMultiplier: 0,
+    loading: false,
 }
 
 export default MyProfileState;

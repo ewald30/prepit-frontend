@@ -3,7 +3,7 @@ export const MealPlanComponentState = {
     weight : null,
     gender: '',
     age : null,
-    numberOfMeals: 3,
+    numberOfMeals: null,
     activityType: null,
     goal: '',
     goalTier: 0,

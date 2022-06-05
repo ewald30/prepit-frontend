@@ -1,0 +1,52 @@
+@import '../../assets/styles/shared';
+
+
+.home-container{
+    height: 100%;
+}
+
+.home{
+    margin-top: 2rem;
+    height: 100%;
+
+
+    &-header{
+        width: 50%;
+
+        &-title{
+            margin-top: 1.5rem;
+            line-height: 80%;
+            padding-bottom:1rem;
+        }
+
+        &-content{
+            margin-top: 2rem;
+        }
+    }
+
+    &-button{
+        margin-top: 2rem;
+
+    }
+
+    &-content{
+        margin-top: 3rem;
+        width: 80%;
+    }
+}
+
+.carousel-image{
+    img{
+        height:400px;
+        object-fit: cover;
+    }
+    
+}
+
+.carousel-slider{
+    border-radius: $border-radius-rounder !important;
+
+}
+.thumbs-wrapper{
+    display: none;
+}

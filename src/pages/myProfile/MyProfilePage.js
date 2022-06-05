@@ -1,81 +1,110 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { createCollection } from '../../api/collection/CollectionApi';
-import getCollections from '../../api/myProfile/myProfileApi';
-import CollectionCreateModal from '../../components/collectionCreateModal/CollectionCreateModal';
-import CollectionsComponent from '../../components/collections/CollectionsComponent';
 import AnimatedTranslateTransition from '../../components/utils/AnimatedTranslateTransition';
 import MyProfileState from '../../core/myProfile';
-import { setSelectedCollection } from '../../redux/actions/collection';
 import './MyProfilePage.scss';
+import '../../assets/styles/_shared.scss';
+import { updateUser } from '../../api/user/userApi';
+import { BarLoader } from 'react-spinners';
+import logo from '../../assets/svgs/user.png';
+
 
 const MyProfilePage = () => {
-    const userId = 1;
     const [state, setState] = useState(MyProfileState);
-    const {collections, firstName, lastName, collectionCreationModalOpen} = state;
-    const dispatch = useDispatch();
-const navigate = useNavigate();
+    const { firstName, lastName, timePriceMultiplier, accuracyMultiplier, loading} = state;
+    
     useEffect(() => {
-        init();
+        const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+        updateState(userInfo);
     }, [])
 
-    function init(){
-        const token =  localStorage.getItem('token');
-        const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+    function updateState(userInfo){
+        const priceMultiplier = userInfo.priceMultiplier;
+        const timeMultiplier= userInfo.timeMultiplier;
+        const accuracyMultiplier = userInfo.accuracyMultiplier;
+        let timePriceMultiplierValue;
 
-        getCollectionsForUser();
+        if (priceMultiplier > 1){
+            timePriceMultiplierValue = -1 * priceMultiplier;
+        } else if (timeMultiplier > 1) {
+            timePriceMultiplierValue = timeMultiplier
+        } else{
+            timePriceMultiplierValue = 1;
+        }
 
-        async function getCollectionsForUser(){
-            const response = await getCollections(token, userInfo.id);
-            setState({...state, 
-                collections: response,
-                height:userInfo.height,
-                weight:userInfo.weight,
-                firstName:userInfo.firstName,
-                lastName:userInfo.lastName,
-                email:userInfo.email,
-                age:userInfo.age > 0? userInfo.age : null,
-                gender: userInfo.gender,
-                collectionCreationModalOpen: false
+        setState({...state, 
+            height:userInfo.height,
+            weight:userInfo.weight,
+            firstName:userInfo.firstName,
+            lastName:userInfo.lastName,
+            email:userInfo.email,
+            age:userInfo.age > 0? userInfo.age : null,
+            gender: userInfo.gender,
+            accuracyMultiplier: accuracyMultiplier,
+            timePriceMultiplier: timePriceMultiplierValue,
+            loading: false
+        });
+    }
+
+    function resetDefault(){
+        setState({...state, 
+            timePriceMultiplier: 0, 
+            accuracyMultiplier: 10
             })
+        handleSaveSettings();
+    }
+
+    function handleSaveSettings(){
+        setState({...state, loading:true});
+        let timeMultiplier, priceMultiplier;
+        if (timePriceMultiplier < 0){
+            priceMultiplier = Math.abs(timePriceMultiplier);
+            timeMultiplier = 1;
+        } else if (timePriceMultiplier > 0){
+            timeMultiplier = timePriceMultiplier
+            priceMultiplier = 1;
+        } else{
+            timeMultiplier = 1;
+            priceMultiplier = 1;
+        }
+
+        console.log("multis");
+        console.log(timeMultiplier, priceMultiplier);
+        const userInfo = JSON.parse(localStorage.getItem('userInfo'));
+        const token = localStorage.getItem('token');
+
+        const userDto = {
+            accuracyMultiplier: accuracyMultiplier,
+            activityType: "",
+            age: userInfo.age,
+            firstName: userInfo.firstName,
+            gender: userInfo.gender,
+            height: userInfo.height,
+            id: userInfo.id,
+            lastName: userInfo.lastName,
+            priceMultiplier: priceMultiplier,
+            timeMultiplier: timeMultiplier,
+            weight: userInfo.weight
+        }
+
+        update(userDto);
+
+        async function update(userInfo) {
+            const response = await updateUser(userInfo, token);
+            localStorage.setItem('userInfo', JSON.stringify(response));
+            const userInfoUpdated = JSON.parse(localStorage.getItem('userInfo'));
+            updateState(userInfoUpdated);
         }
     }
 
-    function handleCreateNewCollection(title, description){
-        setState({...state, collectionCreationModalOpen: false, loadingSaveMeal: true})
-
-        console.log("TITLE, DESCRIPTION", title, description)
-        createNewCollection(title, description);
-
-        async function createNewCollection(title, description){
-            try{
-                const response = await createCollection(title, description);
-                setState({...state, loadingSaveMeal: false, collectionCreationModalOpen: false,})
-                init();
-            } catch (error){
-                console.error(error);
-                setState({...state, loadingSaveMeal: false, collectionCreationModalOpen: false,})
-
-            }
-        }
-    }
-
-    function handleSelectCollection(item){
-        console.log(item);
-        const collection = {
-            id: item.collectionId,
-            name: item.name,
-            description: item.description
-        }
-        dispatch(setSelectedCollection(collection));
-        navigate("/meal/saved-meals");
-    }
 
     return (
-        <div className='my-profile flex-column-center-y flex-column-center-x'> 
+        <div className='my-profile flex-row-center-y flex-space-around'> 
                 <AnimatedTranslateTransition>
-                <div className='my-profile-container generic-container'>
+                <div className='my-profile-container generic-container flex-column-center-x'>
+                    <div className={'generic-container-header login-component-logo'}>
+                        <img className={'logo-rounded'} src={logo}/>
+                    </div>
+
                     <div className='profile flex-column-center-x text-biggest text-darkest-grey'>
                         {firstName + " " + lastName}
                         <div className='profile-info flex-column-center-x text-normal'>
@@ -89,22 +118,38 @@ const navigate = useNavigate();
                             <div className='flex-row flex-space-between profile-info'>
                                 <div>Height: </div><div>{state.height}</div>
                             </div>
+                            <div className='slider-container'>
+                                <div className='slider-container-label text-norma tex-grey'>Accuracy multiplier</div>
+                                <div className=' flex-space-between flex-row-center-y'>
+                                    <input value={accuracyMultiplier} className="slider" type="range" name="accuracy" min="5" max="10" onChange={(e) => setState({...state, accuracyMultiplier: e.target.value})}/>
+                                    {accuracyMultiplier? <div className='slider-left'>{accuracyMultiplier}</div> : 0}
+                                </div>
+                            </div>
+
+                            <div className='slider-container'>
+                                <div className='slider-container-label text-norma tex-grey'>Price / Time multiplier</div>
+                                <div className=' flex-space-between flex-row-center-y'>
+                                    <input value={timePriceMultiplier} className="slider" type="range" name="accuracy" min="-5" max="5" onChange={(e) => setState({...state, timePriceMultiplier: e.target.value})}/>
+                                    {timePriceMultiplier? <div className='slider-left'>{timePriceMultiplier}</div> : 0}
+                                </div>
+                            </div>
+
+                            <div className='save-container'>
+                                <button className='button-primary save-button' onClick={handleSaveSettings}>Save</button>
+                                {/* <button className='button-transparent button' onClick={resetDefault}>Reset</button> */}
+
+                            </div>
+                            {loading && <BarLoader width={150} height={5} color={'#29474A'} loading={loading} style={{'width':'100%'}}/>}
+
                         </div>
-                    </div>
-                    <div className='text-normal-2 text-thinner' style={{'margin-bottom':'-1rem'}}>
-                        Collections : {collections.length}
-                    </div>
-                    <hr className='solid'/>
-                    <div className='collections'>
-                        <CollectionsComponent collections={collections}
-                                                    onSelectCollection={handleSelectCollection}
-                                                    onCreateNewCollection={() => {console.log('aiaia baaa'); setState({...state, collectionCreationModalOpen: true})}}/>
                     </div>
                 </div>
                 </AnimatedTranslateTransition>
-
-                {collectionCreationModalOpen && <CollectionCreateModal open={collectionCreationModalOpen} onClose={() => {setState({...state, collectionCreationModalOpen: false})}} onSave={handleCreateNewCollection}/>}
-
+                <AnimatedTranslateTransition>
+                            <div className={'text-big text-center text-dark-grey login-page-graphics-text text-bold'}>
+                                Start exploring the settings to feel whatever suits you
+                            </div>
+                </AnimatedTranslateTransition>
         </div>
     )
 }

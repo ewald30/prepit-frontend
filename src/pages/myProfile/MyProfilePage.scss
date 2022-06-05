@@ -17,13 +17,18 @@
         width: 210px;
     }
 
-    margin-bottom: 3rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
-.collections{
-    height: 400px;
-    overflow-y: scroll;
-    overflow-x: hidden;
+
+.save-container{
+    width: 100%;
+}
+
+.save-button{
+    margin-top: 2rem;
+    width: 100%;
 }
 
 // @media (max-width: 1190px){

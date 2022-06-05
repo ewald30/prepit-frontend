@@ -155,7 +155,6 @@ const MealPlanPage = () => {
                             handleSwitch={handleSwitchMeal}
                             numberOfMeals={meals.length}
                             selectedMeal={selectedMeal}
-                            className={'meal-switcher'}
                         />
                     </div>}
 

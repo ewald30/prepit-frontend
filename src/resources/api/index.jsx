@@ -26,6 +26,8 @@ export const GENERATE_PLAN_URL = `${BASE_URL}/meal/generate`;
 
 // User
 export const USER_INFO_URL = `${BASE_URL}/user/info`;
+export const USER_UPDATE = `${BASE_URL}/user/update`;
+export const USER_UPDATE_MEASUREMENTS = `${BASE_URL}/user/update-measurements`;
 
 
 
@@ -42,3 +44,12 @@ export const GET_COLLECTIONS_FOR_USER = (userId) => {
 }
 
 export const SAVE_MEAL_TO_COLLECTION_URL = `${BASE_URL}/collection/save-meal`
+
+
+
+
+
+// Dev tools
+export const GET_ALGORITHM_DATA_FOR_PLOT = (iterations, calories) => {
+    return `${BASE_URL}/meal/test/plot?iterations=${iterations}&calories=${calories}`
+}

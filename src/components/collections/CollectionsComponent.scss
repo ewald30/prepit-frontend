@@ -3,5 +3,12 @@
 .collection-card-selected{
     border: 3px solid $darker-grey;
     border-radius: $border-radius-standard;
-    height: 333px;
+    height: 533px;
+}
+
+.collections{
+    height: 600px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    cursor: pointer;
 }
