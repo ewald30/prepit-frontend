@@ -14,38 +14,23 @@ const HomePage = (props) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const images = importAll(require.context('../../assets/stockPhotos', false, /\.(png|jpe?g|svg)$/));
-        setImages(getRandomImages(Object.values(images)));
-        setLoading(false)
-        console.log("IMAGES", images);
+        loadRandomImages(); // loads random images from the stockImages directory
     }, [])
 
-    function getRandomImages(images) {
-        // Shuffle array
-        const shuffled = images.sort(() => 0.5 - Math.random());
-        
-        // Get sub-array of first n elements after shuffled
-        let selected = shuffled.slice(0, NUMBER_OF_IMAGES);
-        return selected;
-    }
 
-    function importAll(r) {
-        let images = {};
-        r.keys().map((item, index) => { images[item.replace('./', '')] = r(item); });
-        return images;
-    }
-    
-
-    function handleOnChange(){
-        console.log("change")
-    }
-
-    function handleOnClickItem(){
-        console.log("click")
-    }
-
-    function handleOnClickThumb(){
-        console.log("thumb")
+    function loadRandomImages(){
+        let i=0;
+        let images = [];
+        while (i < NUMBER_OF_IMAGES){
+            const imageNb = Math.floor(Math.random() * 22);
+            const image   = require(`../../assets/stockPhotos/stock${imageNb}.jpg`);
+            if (!images.some(e => e === image)) {
+                images.push(image);
+                i++;
+              }
+        }
+        setImages(images)
+        setLoading(false)
     }
 
     const getConfigurableProps = () => ({
@@ -63,8 +48,8 @@ const HomePage = (props) => {
         autoFocus: false,
         thumbWidth: 100,
         selectedItem: 0,
-        interval: 2000,
-        transitionTime: 500,
+        interval: 4000,
+        transitionTime:1500,
         swipeScrollTolerance: 5,
         ariaLabel: undefined,
     });
@@ -93,22 +78,13 @@ const HomePage = (props) => {
                         </div>
                     </div>
                     <div className="home-button">
-                            <Link to="/auth/register" className="text-big text-bolder link-full" onClick={() => {handleAnimation(true)}}>Join now!</Link>
+                        <Link to="/auth/register" className="text-big text-bolder link-full" onClick={() => {handleAnimation(true)}}>Join now!</Link>
+                    </div>
+                    <div className='home-login-link text-center text-normal-2 text-darkest-grey text-bold'>
+                        Or sign in <Link to="/auth/register" className="text-bolder link-header" onClick={() => {handleAnimation(true)}}>here</Link>
                         </div>
                     <div className="home-content">
                         {images && <Carousel {...getConfigurableProps()}>
-                            {/* <div className='carousel-image'>
-                                <img src={images['stock1.jpg']}/>
-                            </div>
-                            <div className='carousel-image'>
-                                <img src={images['stock2.jpg']}/>
-                            </div>
-                            <div className='carousel-image'>
-                                <img src={images['stock3.jpg']}/>
-                            </div>
-                            <div className='carousel-image'>
-                                <img src={images['stock4.jpg']}/>
-                            </div> */}
                             {images.map((image) => {
                                 return (
                                 <div className='carousel-image'>

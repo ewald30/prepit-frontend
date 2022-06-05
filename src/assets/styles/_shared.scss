@@ -111,7 +111,7 @@
 
     &-gradient{
         font-size: 7rem;
-        background: -webkit-linear-gradient(0deg, rgba(41,71,74,1) 0%, rgba(177,189,162,1) 99%);
+        background: -webkit-linear-gradient(270deg, rgba(41,71,74,1) 0%, rgba(177,189,162,1) 99%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
@@ -614,7 +614,6 @@ hr.solid{
 
 .loader{
     &-full-screen{
-        background-color: red;
         width: 100%;
         height: 100%;
         display: flex;

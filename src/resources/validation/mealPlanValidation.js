@@ -1,6 +1,5 @@
 
 export const validateMealPlanInput = (values) => {
-    debugger;
     const errors = {}
 
     if (!values.gender){
@@ -40,6 +39,5 @@ export const validateMealPlanInput = (values) => {
     if (!values.goalTier){
         errors.goalTier = "Goal tier is required";
     }
-    debugger;
     return errors;
 }

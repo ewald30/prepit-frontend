@@ -78,3 +78,30 @@
     background-color:$accent !important;
     color: white !important;
 }
+
+
+@media (max-width: $media-breakpoint-width-tablet-small){
+    .modal{
+    }
+
+    .meal-modal{
+        flex-direction: column !important;
+        align-items: center;
+        justify-content: flex-start;
+        width: 400px;
+        height: 500px;
+        overflow-y: scroll;
+
+        &-left{
+            margin-bottom: 2rem;
+            margin-left: 0px;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+        }
+
+        &-right{
+            overflow-y: hidden;
+        }
+    }
+}

@@ -3,6 +3,7 @@
 
 .home-container{
     height: 100%;
+    overflow-y: scroll;
 }
 
 .home{
@@ -33,6 +34,10 @@
         margin-top: 3rem;
         width: 80%;
     }
+
+    &-login-link{
+        margin-top: 1rem;
+    }
 }
 
 .carousel-image{
@@ -49,4 +54,33 @@
 }
 .thumbs-wrapper{
     display: none;
+}
+
+@media (max-width: $media-breakpoint-width-laptop){
+    .home{
+        &-header{
+            width: 80%;
+        }
+    }
+}
+@media (max-width: $media-breakpoint-width-tablet-medium){
+    .home{
+        justify-content: flex-end;
+        margin-top: 5rem;
+        padding-bottom: 2rem;
+        &-header{
+            width: 90%;
+            &-title{
+                color: $accent !important;
+            }
+        }
+    }
+}
+
+@media (max-height: $media-breakpoint-width-tablet-small){
+    .home{
+        justify-content: flex-end;
+        margin-top: 10rem;
+        padding-bottom: 2rem;
+    }
 }

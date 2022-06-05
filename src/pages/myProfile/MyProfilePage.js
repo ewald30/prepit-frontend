@@ -146,7 +146,7 @@ const MyProfilePage = () => {
                 </div>
                 </AnimatedTranslateTransition>
                 <AnimatedTranslateTransition>
-                            <div className={'text-big text-center text-dark-grey login-page-graphics-text text-bold'}>
+                            <div className={'text-big text-center text-dark-grey login-page-graphics-text text-bold my-profile-graphics'}>
                                 Start exploring the settings to feel whatever suits you
                             </div>
                 </AnimatedTranslateTransition>
