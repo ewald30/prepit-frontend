@@ -14,7 +14,15 @@ export default function MealModal(props) {
     const {item, onClose, open, onSave} = props;
     const instructions = item.instructions.split('|');
     const ingredients = item.ingredients.split('|');
-    const nutritionInfo = item.nutritions_info.split('|');
+
+    let nutritionInfo = item.nutritions_info.split('|');
+    nutritionInfo = nutritionInfo.map(element => {
+        console.log(element)
+        element = element.replace(':', ": ")    // add a space after :
+        element = element.replace('C', ' c')    // replace camel case on Content
+        element = element.replace('F', ' f')    // replace camel case on FatContent
+        return element;
+    });
 
     return (
         <Modal open={open} onClose={onClose}>
@@ -30,7 +38,7 @@ export default function MealModal(props) {
                         {item.price_score && <MealModalInfo icon={dollar} label={'Price score'} info={`${item.price_score} / 5`}/>}
                         {item.calories && <MealModalInfo icon={chart} label={"Calories"} info={item.calories}/>}
                         {item.serving && <MealModalInfo icon={bowl} label={'Serving'} info={item.serving}/>} 
-                        {/* {item.type && <MealModalInfo icon={tag} label={'Type'} info={item.type}/>} */}
+                        {item.type && <MealModalInfo icon={tag} label={'Type'} info={item.type}/>}
                         <div className="meal-save">
                             <button className={'button-transparent text-normal meal-save-button'} onClick={() => {onSave(item)}}>Save</button>
                         </div>

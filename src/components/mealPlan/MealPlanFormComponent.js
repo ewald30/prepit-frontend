@@ -188,12 +188,12 @@ const MealPlanFormComponent = (props) => {
 
            <div className={'generic-select-dropdown'}>
                 <select className={'generic-select-dropdown-select'} value={state.activityType} onChange={(event) => {setState({...state, activityType:event.target.value})}}>
-                    <option value="" disabled selected>Select activity type</option>
+                    <option value="" disabled selected></option>
                     <option value={'SEDENTARY'}>Sedentary</option>
-                    <option value={'LIGHT_ACTIVITY'}>Light activity</option>
-                    <option value={'MODERATE_ACTIVITY'}>Moderate activity</option>
-                    <option value={'ABOVE_AVERAGE_ACTIVITY'}>Above average activity</option>
-                    <option value={'VERY_ACTIVE'}>Very active</option>
+                    <option value={'LIGHT_ACTIVITY'}>Light activity (1-2 days/week)</option>
+                    <option value={'MODERATE_ACTIVITY'}>Moderate activity (3-5 days/week)</option>
+                    <option value={'ABOVE_AVERAGE_ACTIVITY'}>Very active (6-7 days/week)</option>
+                    <option value={'VERY_ACTIVE'}>Athlete (2x per day)</option>
                 </select>
                 <img src={select} className={"generic-select-dropdown-icon-img"}/>
            </div>  
@@ -213,11 +213,12 @@ const MealPlanFormComponent = (props) => {
 
             <div className={'meal-form-goal-multiplier'}>
                 <div className={'generic-multiple-option-toggle'}>
-                    <button style={ state.goalTier == GOAL_TIERS.TIER1? checkedStyle : {"background-color":"#efefef"}} onClick={() => setState({...state, goalTier: GOAL_TIERS.TIER1})}>0.25kg</button>
+                    <button style={ state.goalTier == GOAL_TIERS.TIER1? checkedStyle : {"background-color":"#efefef"}} onClick={() => setState({...state, goalTier: GOAL_TIERS.TIER1})}>0.25kg / week</button>
                     {state.goalTier === 0 && <div>|</div>}
-                    <button style={ state.goalTier == GOAL_TIERS.TIER2? checkedStyle : {"background-color":"#efefef"}} onClick={() => setState({...state, goalTier: GOAL_TIERS.TIER2})}>0.50kg</button>
+                    <button style={ state.goalTier == GOAL_TIERS.TIER2? checkedStyle : {"background-color":"#efefef"}} onClick={() => setState({...state, goalTier: GOAL_TIERS.TIER2})}>0.50kg / week</button>
                 </div>
                 {formErrors.goalTier && <div className="generic-container-error">{formErrors.goalTier}</div>}
+                {/* {!formErrors.goalTier && <div className="generic-container-info">* per week</div>} */}
 
             </div>
             

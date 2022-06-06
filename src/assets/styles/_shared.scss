@@ -451,6 +451,12 @@ input:-moz-placeholder {
         margin-left: 1rem;
         color: $red;
     }
+
+    &-info{
+        font-size: 0.8rem;
+        margin-left: 1rem;
+        margin-top: -.5rem;
+    }
 }
 
 .generic-error-container{
@@ -549,8 +555,8 @@ input:-moz-placeholder {
         border: none;
         text-align: right;
         position:fixed;
-        left: 85%;
-        bottom: 90%;
+        right: 0%;
+        bottom: 92%;
         border-radius: $border-radius-rounder;
     }
 }
