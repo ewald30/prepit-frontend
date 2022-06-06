@@ -83,11 +83,25 @@ const MealPlanFormComponent = (props) => {
         const info = JSON.parse(localStorage.getItem('userInfo'));
         setState({...state, loading: true});
 
-        if (state.overwrittenValues && info && !state.saveUser){
-            setState({...state, modalOpen: true});
+        if (state.overwrittenValues && info && !state.saveUser){        // ask for agreement to save the data
+            setState({...state, modalOpen: true});  
         }
-        else
+        else{
+            if (state.saveUser === 'yes'){    // if the user agreed for the data to be saved
+                updateUserInfo();
+            }
             requestGeneratePlan();
+        }
+
+        function updateUserInfo(){
+            debugger;
+            const info = JSON.parse(localStorage.getItem('userInfo'));
+            info.age = state.age;
+            info.height = state.height;
+            info.weight = state.weight;
+            info.gender = state.gender;
+            localStorage.setItem('userInfo', JSON.stringify(info));
+        }
 
         async function requestGeneratePlan(){
             try{
