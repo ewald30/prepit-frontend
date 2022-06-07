@@ -80,7 +80,7 @@ const MealPlanPage = () => {
 
         async function getCollectionsForUser(){
             const getCollectionsWrapped = authRequestWrapper(getCollections);
-            const response = await getCollectionsWrapped(token, userInfo.id)
+            const response = await getCollectionsWrapped(userInfo.id)
             setState({...state, collections: response, collectionModalOpen: true, modalOpen: false, selectedRecipe: meal, collectionCreationModalOpen: false})
 
         }
