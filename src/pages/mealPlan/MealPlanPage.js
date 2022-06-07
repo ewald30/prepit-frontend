@@ -12,7 +12,7 @@ import { MealPlanPageState } from '../../core/mealPlan';
 import MealModal from '../../components/mealModal/MealModal';
 import CollectionsComponent from '../../components/collections/CollectionsComponent';
 import Modal from '../../components/modal/Modal';
-import { createCollection, saveMealToCollection, getCollections } from '../../api/collection/collectionApi';
+import { createCollection, saveMealToCollection, getCollections } from '../../api/collections/collectionsApi';
 import { BeatLoader, ClimbingBoxLoader } from 'react-spinners';
 import CollectionCreateModal from '../../components/collectionCreateModal/CollectionCreateModal';
 import { authRequestWrapper } from '../../api/auth/auth';

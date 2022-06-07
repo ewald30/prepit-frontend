@@ -9,7 +9,7 @@ import { setSelectedCollection } from '../../redux/actions/collection';
 import './MyCollectionsPage.scss';
 import { sessionExpired } from '../../redux/actions/auth';
 import { authRequestWrapper } from '../../api/auth/auth';
-import { createCollection, getCollections } from '../../api/collection/collectionApi';
+import { createCollection, getCollections } from '../../api/collections/collectionsApi';
 
 const MyCollectionsPage = () => {
     const [state, setState] = useState(MyCollectionsState);

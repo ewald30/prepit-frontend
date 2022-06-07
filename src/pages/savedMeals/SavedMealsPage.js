@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import { authRequestWrapper } from '../../api/auth/auth';
-import { getSavedMeals } from '../../api/collection/collectionApi';
+import { getSavedMeals } from '../../api/collections/collectionsApi';
 import CardRecipeComponent from '../../components/card/CardRecipeComponent';
 import MealModal from '../../components/mealModal/MealModal';
 import AnimatedTranslateTransition from '../../components/utils/AnimatedTranslateTransition';

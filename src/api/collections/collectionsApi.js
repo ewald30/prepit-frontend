@@ -1,7 +1,6 @@
 import axios from "axios";
 import { GET_SAVED_MEALS_URL, GET_COLLECTIONS_FOR_USER, getAuthHeader, SAVE_MEAL_TO_COLLECTION_URL, CREATE_NEW_COLLECTION_URL} from "../../resources/api";
 import { withLogs } from "../../resources/logging";
-import { handleRefreshToken } from "../auth/auth";
 
 export const getSavedMeals = (collectionId) => {
     return withLogs(

@@ -4,7 +4,7 @@ import logoTitle from '../../assets/svgs/logo_titleOnly.svg';
 import './Header.scss';
 import '../../assets/styles/_shared.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { sessionExpired, setLoggedIn } from '../../redux/actions/auth';
+import { logOut, sessionExpired, setLoggedIn } from '../../redux/actions/auth';
 import NavbarMobile from '../navbarMobile/NavbarMobile';
 import menuIcon from '../../assets/svgs/icons/menu.svg';
 import logo from '../../assets/svgs/logo_iconOnly.svg';
@@ -22,7 +22,7 @@ const Header = (props) => {
     console.log("MENU OPEN", menuOpen);
 
     const handleLogOut = () => {
-        dispatch(sessionExpired())
+        dispatch(logOut());
         handleAnimation(true);
     }
 
