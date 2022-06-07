@@ -3,10 +3,12 @@ import { withLogs } from '../../../resources/logging';
 import {LOGIN_URL, headers, REGISTER_URL} from  '../../../resources/api/index';
 
 export const login = (username, password) => {
-    return withLogs(
+    const response = withLogs(
         axios.post(LOGIN_URL,{username, password}, headers),
-         'Login'
+        'Login'
         );
+    return response;
+    
 }
 
 export const register = (email, firstName, lastName,  password, passwordConfirmation) => {

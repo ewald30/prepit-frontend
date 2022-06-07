@@ -2,10 +2,14 @@ export const headers = {
     'Content--Type': 'application/json'
 }
 
-export const getAuthHeader = (token) => {
+export const getAuthHeader = () => {
+    const refreshToken = localStorage.getItem('refreshToken');
+    const token = localStorage.getItem('token');
+
     return {
         'Content--Type': 'application/json',
-        'Authorization': `Bearer ${token}`
+        'Authorization': `Bearer ${token}`,
+        'Refresh-Token': `Bearer ${refreshToken}`
     }
 }
 
@@ -14,7 +18,7 @@ const BASE_URL = process.env.REACT_APP_API_ENV=== 'development' ? 'http://localh
 // Auth
 export const LOGIN_URL = `${BASE_URL}/auth/login`;
 export const REGISTER_URL = `${BASE_URL}/auth/register`;
-
+export const REFRESH_TOKEN_URL = `${BASE_URL}/auth/token/refresh`;
 
 
 

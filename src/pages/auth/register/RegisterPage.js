@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import RegisterComponent from '../../../components/auth/register/RegisterComponent';
-import registerGraphic from '../../../assets/svgs/illustrations/undraw_unlock.svg';
 import mailbox from '../../../assets/svgs/illustrations/undraw_mailbox.svg';
 import '../../../assets/styles/_shared.scss';
 import './RegisterPage.scss';
@@ -33,7 +32,6 @@ const RegisterPage = () => {
                     </div>
                     <div className={'register-page-graphics'}> 
                         <AnimatedFadeTransition>
-                            <img src={registerGraphic}/>
                             <div className={'text-big text-center text-bold text-dark-grey login-page-graphics-text'}>
                                 Unlock the full experience of meal preparation!
                             </div>
@@ -44,7 +42,7 @@ const RegisterPage = () => {
                 {isOpen && <Modal open={isOpen} onClose={() => {handleModalOnClose()}}>
                         <div className="modal-email-sent flex-column-center-x">
                             <img src={mailbox} />
-                            <div style={{'margin-top': '2rem'}} className={'text-bigger text-center text-bold'}> Please check your mailbox to verify your email address</div>
+                            <div style={{'margin-top': '1rem'}} className={'text-bigger text-center text-bold'}> Please check your mailbox to verify your email address</div>
                         </div>
                     </Modal>}
         </div>

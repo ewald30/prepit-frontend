@@ -4,14 +4,24 @@ import AnimatedFadeTransition from '../../components/utils/AnimatedFadeTransitio
 import { Link } from 'react-router-dom';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { ClimbingBoxLoader, ClipLoader } from 'react-spinners';
+import { useDispatch, useSelector } from 'react-redux';
+import alertImg from '../../assets/svgs/illustrations/undraw_alert.svg';
+import Modal from '../../components/modal/Modal';
+import { setSessionExpired } from '../../redux/actions/auth';
+
 var Carousel = require('react-responsive-carousel').Carousel;
 
 const NUMBER_OF_IMAGES = 4;
 
 const HomePage = (props) => {
     const {handleAnimation} = props;
-    const[images, setImages] = useState([]);
+    const [images, setImages] = useState([]);
+    const [isOpen, setIsOpen] = useState(false);
     const [loading, setLoading] = useState(true);
+
+    const dispatch = useDispatch();
+    const sessionExpired = useSelector(state => state.auth.sessionExpired); // show info modal with session expired based on this variable
+
 
     useEffect(() => {
         loadRandomImages(); // loads random images from the stockImages directory
@@ -31,6 +41,13 @@ const HomePage = (props) => {
         }
         setImages(images)
         setLoading(false)
+    }
+
+    function handleModalOnClose(){
+        setIsOpen(false);
+        dispatch(setSessionExpired(false));
+        console.log("asdasdasdasda");
+        //navigate('/auth/login');
     }
 
     const getConfigurableProps = () => ({
@@ -95,6 +112,14 @@ const HomePage = (props) => {
                             
                         </Carousel>}
                     </div>
+                    {sessionExpired && <Modal open={sessionExpired} onClose={() => {handleModalOnClose()}}>
+                            <div className="modal-email-sent flex-column-center-x">
+                                <img src={alertImg} />
+                                <div style={{'margin-top': '1rem'}} className={'text-bigger text-center text-bold'}> Session expired! Please login.</div>
+                                <Link style={{'margin-top': '1rem'}} to="/auth/login" className="text-bigger text-bolder link-full" onClick={() => {handleAnimation(true)}}>Login</Link>
+
+                            </div>
+                        </Modal>}
                 </div>
             </AnimatedFadeTransition>
         </div>

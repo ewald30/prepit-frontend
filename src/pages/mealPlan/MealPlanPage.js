@@ -5,7 +5,6 @@ import MealSwitcher from '../../components/mealPlan/MealSwitcher';
 import '../../assets/styles/_shared.scss';
 import './MealPlanPage.scss'
 
-import graphics from'../../assets/svgs/illustrations/undraw_barbeque.svg';
 import AnimatedTranslateTransition from '../../components/utils/AnimatedTranslateTransition';
 import AnimatedFadeTransition from '../../components/utils/AnimatedFadeTransition';
 import CardRecipeComponent from '../../components/card/CardRecipeComponent';
@@ -13,10 +12,10 @@ import { MealPlanPageState } from '../../core/mealPlan';
 import MealModal from '../../components/mealModal/MealModal';
 import CollectionsComponent from '../../components/collections/CollectionsComponent';
 import Modal from '../../components/modal/Modal';
-import getCollections from '../../api/myProfile/myProfileApi';
-import { createCollection, saveMealToCollection } from '../../api/collection/CollectionApi';
+import { createCollection, saveMealToCollection, getCollections } from '../../api/collection/collectionApi';
 import { BeatLoader, ClimbingBoxLoader } from 'react-spinners';
 import CollectionCreateModal from '../../components/collectionCreateModal/CollectionCreateModal';
+import { authRequestWrapper } from '../../api/auth/auth';
 
 const MEALS = {
     BREAKFAST : 0,
@@ -49,7 +48,8 @@ const MealPlanPage = () => {
 
         async function createNewCollection(title, description){
             try{
-                const response = await createCollection(title, description);
+                const createCollectionWrapped = authRequestWrapper(createCollection)        // wrapper that handles the refresh jwt token
+                const response = await createCollectionWrapped(title, description);
                 setState({...state, loadingSaveMeal: false, collectionCreationModalOpen: false,})
                 handleGetCollections(selectedRecipe);
             } catch (error){
@@ -79,7 +79,8 @@ const MealPlanPage = () => {
 
 
         async function getCollectionsForUser(){
-            const response = await getCollections(token, userInfo.id)
+            const getCollectionsWrapped = authRequestWrapper(getCollections);
+            const response = await getCollectionsWrapped(token, userInfo.id)
             setState({...state, collections: response, collectionModalOpen: true, modalOpen: false, selectedRecipe: meal, collectionCreationModalOpen: false})
 
         }
@@ -92,12 +93,8 @@ const MealPlanPage = () => {
 
         async function saveMeal(){
             try{
-                await saveMealToCollection(token, 
-                    selectedCollection.collectionId, 
-                    selectedCollection.name,
-                    selectedCollection.description,
-                    selectedRecipe
-                    )
+                const saveMealToCollectionWrapper = authRequestWrapper(saveMealToCollection);
+                await saveMealToCollectionWrapper(token, selectedCollection.collectionId, selectedCollection.name,selectedCollection.description,selectedRecipe)
 
                 setState({...state, loadingSaveMeal: false});
                 handleGetCollections(selectedRecipe);
@@ -131,7 +128,6 @@ const MealPlanPage = () => {
                 <div className={meals.length === 0 ? "meal-plan-page-graphics" : "meal-plan-page-recipes"}>
                      
                     {meals.length === 0 && <AnimatedFadeTransition>
-                        <img src={graphics}/>
                         <div className={'text-big text-center text-bold text-dark-grey login-page-graphics-text'}>
                             Complete the information and start eating!
                         </div>

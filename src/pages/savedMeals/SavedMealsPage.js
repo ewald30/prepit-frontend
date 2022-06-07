@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
-import { getSavedMeals } from '../../api/collection/CollectionApi';
+import { authRequestWrapper } from '../../api/auth/auth';
+import { getSavedMeals } from '../../api/collection/collectionApi';
 import CardRecipeComponent from '../../components/card/CardRecipeComponent';
 import MealModal from '../../components/mealModal/MealModal';
 import AnimatedTranslateTransition from '../../components/utils/AnimatedTranslateTransition';
@@ -16,11 +17,11 @@ const SavedMealsPage = () => {
     
 
     useEffect(() => {
-        const token = localStorage.getItem('token');
         getMeals();
 
         async function getMeals(){
-            const response  = await getSavedMeals(token, id);
+            const getSavedMealsWrapper = authRequestWrapper(getSavedMeals);
+            const response  = await getSavedMealsWrapper(id);
             setState({...state, meals: response.containedMeals})        }
     }, [])
 

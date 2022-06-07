@@ -188,7 +188,7 @@ const MealPlanFormComponent = (props) => {
 
            <div className={'generic-select-dropdown'}>
                 <select className={'generic-select-dropdown-select'} value={state.activityType} onChange={(event) => {setState({...state, activityType:event.target.value})}}>
-                    <option value="" disabled selected></option>
+                    <option disabled selected>Select activity level</option>
                     <option value={'SEDENTARY'}>Sedentary</option>
                     <option value={'LIGHT_ACTIVITY'}>Light activity (1-2 days/week)</option>
                     <option value={'MODERATE_ACTIVITY'}>Moderate activity (3-5 days/week)</option>

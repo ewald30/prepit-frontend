@@ -1,6 +1,5 @@
 import React from 'react';
 import LoginComponent from '../../../components/auth/login/LoginComponent';
-import loginGraphic from '../../../assets/svgs//illustrations/undraw_cookie.svg';
 import '../../../assets/styles/_shared.scss';
 import './LoginPage.scss';
 import AnimatedFadeTransition from '../../../components/utils/AnimatedFadeTransition';
@@ -17,7 +16,6 @@ const LoginPage = () => {
                     </div>
                     <div className={'login-page-graphics'}> 
                         <AnimatedFadeTransition>
-                            <img src={loginGraphic}/>
                             <div className={'text-big text-center text-dark-grey login-page-graphics-text text-bold'}>
                                 Start upgrading your meal prepping game!
                             </div>

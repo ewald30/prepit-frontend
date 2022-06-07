@@ -3,12 +3,13 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import AnimatedTranslateTransition from '../../components/utils/AnimatedTranslateTransition';
 import { MyCollectionsState } from '../../core/myCollections';
-import { createCollection } from '../../api/collection/CollectionApi';
-import getCollections from '../../api/myProfile/myProfileApi';
 import CollectionCreateModal from '../../components/collectionCreateModal/CollectionCreateModal';
 import CollectionsComponent from '../../components/collections/CollectionsComponent';
 import { setSelectedCollection } from '../../redux/actions/collection';
 import './MyCollectionsPage.scss';
+import { sessionExpired } from '../../redux/actions/auth';
+import { authRequestWrapper } from '../../api/auth/auth';
+import { createCollection, getCollections } from '../../api/collection/collectionApi';
 
 const MyCollectionsPage = () => {
     const [state, setState] = useState(MyCollectionsState);
@@ -22,17 +23,27 @@ const MyCollectionsPage = () => {
     }, [])
 
     function init(){
-        const token =  localStorage.getItem('token');
         const userInfo = JSON.parse(localStorage.getItem('userInfo'));
 
         getCollectionsForUser();
 
         async function getCollectionsForUser(){
-            const response = await getCollections(token, userInfo.id);
-            setState({...state, 
-                collections: response,
-                collectionCreationModalOpen: false
-            })
+            try{
+                const getCollectionsWrapped = authRequestWrapper(getCollections);   // will refresh token if expired
+                const response = await getCollectionsWrapped(userInfo.id);
+                debugger;
+                setState({...state, 
+                    collections: response,
+                    collectionCreationModalOpen: false
+                })
+                debugger;
+            } catch(error){
+                debugger;
+                if (error.response.status === 401){
+                    dispatch(sessionExpired());
+                    navigate('/home');
+                }
+            }
         }
     }
 
@@ -44,7 +55,8 @@ const MyCollectionsPage = () => {
 
         async function createNewCollection(title, description){
             try{
-                const response = await createCollection(title, description);
+                const createCollectionWrapped = authRequestWrapper(createCollection);   // will refresh token if expired
+                const response = await createCollectionWrapped(title, description);
                 setState({...state, loadingSaveMeal: false, collectionCreationModalOpen: false,})
                 init();
             } catch (error){
@@ -70,10 +82,10 @@ const MyCollectionsPage = () => {
         <div className="my-collections flex-column-center-y flex-column-center-x" style={{'height': '100%'}}>
             <AnimatedTranslateTransition style={{'height': '100%'}}>
                 <div className="generic-container" style={{'height': '100%'}}>
-                     <div className='text-biggest'>Saved collections</div>
-                    <div className='text-normal-2 text-thinner' style={{'margin-bottom':'-1rem'}}>
+                    <div className='text-biggest'>Saved collections</div>
+                    {collections && <div className='text-normal-2 text-thinner' style={{'margin-bottom':'-1rem'}}>
                         Collections : {collections.length}
-                    </div>
+                    </div>}
                     <hr className='solid'/>
                     <div className='collections'>
                         <CollectionsComponent collections={collections}

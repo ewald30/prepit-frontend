@@ -6,6 +6,7 @@ import '../../assets/styles/_shared.scss';
 import { updateUser } from '../../api/user/userApi';
 import { BarLoader } from 'react-spinners';
 import logo from '../../assets/svgs/user.png';
+import { authRequestWrapper } from '../../api/auth/auth';
 
 
 const MyProfilePage = () => {
@@ -89,7 +90,8 @@ const MyProfilePage = () => {
         update(userDto);
 
         async function update(userInfo) {
-            const response = await updateUser(userInfo, token);
+            const updateUserWrapper = authRequestWrapper(updateUser);
+            const response = await updateUserWrapper(userInfo, token);
             localStorage.setItem('userInfo', JSON.stringify(response));
             const userInfoUpdated = JSON.parse(localStorage.getItem('userInfo'));
             updateState(userInfoUpdated);
