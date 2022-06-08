@@ -48,7 +48,7 @@ const Header = (props) => {
 
                     <Link to="/meal/meal-plan" className="link-header" onClick={() => {handleAnimation(true)}}>Meal plan</Link>
                     <Link to="/about" className="link-header" onClick={() => {handleAnimation(true)}}>About</Link>
-                    {loggedIn && <Link to="/" className="link-header" onClick={() => {handleAnimation(true); handleLogOut()}}>Log out</Link>}
+                    {loggedIn && <Link to="/" className="link-header" onClick={handleLogOut}>Log out</Link>}
                 </div>
 
                 <div className="header-right-mobile">
