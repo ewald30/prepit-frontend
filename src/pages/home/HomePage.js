@@ -96,7 +96,7 @@ const HomePage = (props) => {
                         <Link to="/auth/register" className="text-big text-bolder link-full" onClick={() => {handleAnimation(true)}}>Join now!</Link>
                     </div>
                     <div className='home-login-link text-center text-normal-2 text-darkest-grey text-bold'>
-                        Or sign in <Link to="/auth/register" className="text-bolder link-header" onClick={() => {handleAnimation(true)}}>here</Link>
+                        Or sign in <Link to="/auth/register" className="text-bolder link-underline text-accent" onClick={() => {handleAnimation(true)}}>here</Link>
                         </div>
                     <div className="home-content">
                         {images && <Carousel {...getConfigurableProps()}>

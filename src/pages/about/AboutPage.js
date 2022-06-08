@@ -16,13 +16,14 @@ const AboutPage = () => {
                                             Author: Berla Ewald
                                         </div>
                                         <div className='text-bigger'>
-                                            Git profile: <a className='link-underline link-header' href='https://github.com/ewald30'>ewald30</a>
+                                            Git profile: <a className='link-underline text-accent' href='https://github.com/ewald30'>ewald30</a>
                                         </div>
                                     </div>
                                     <div style={{'margin-top':'1rem'}}className='text-bigger flex-column-start-x'>
                                         Special thanks to:
-                                        <div>Illustrations: <a className='link-underline link-header' href='https://undraw.co'>Undraw</a></div>
-                                        <div>Icons: <a className='link-underline link-header' href='https://css.gg'>CSS.gg</a></div>
+                                        <div>Illustrations: <a className='link-underline text-accent' href='https://undraw.co'>Undraw</a></div>
+                                        <div>Icons: <a className='link-underline text-accent' href='https://css.gg'>CSS.gg</a></div>
+                                        <div>Effects: <a className='link-underline text-accent' href='https://ui-snippets.dev/'>UI Snippets</a></div>
 
                                     </div>
                                     {/* <a style={{'margin-top':'1rem'}} href="../../assets/user_guide.pdf" download="PrepIt_User_Guide" className="link-header link-underline text-bigger">Download user guide</a> */}
