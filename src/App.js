@@ -11,6 +11,7 @@ import MyProfile from './pages/myProfile/MyProfilePage';
 import DevToolsPage from './pages/devTools/DevToolsPage';
 import MyCollectionsPage from './pages/myCollections/MyCollectionsPage';
 import HomePage from './pages/home/HomePage';
+import AboutPage from './pages/about/AboutPage';
 
 function App() {
   const [animated, setAnimation] = useState(true);
@@ -29,6 +30,7 @@ function App() {
             <Route path="/meal/meal-plan" element={ <MealPlanPage/> } />
             <Route path="/meal/saved-meals" element={<SavedMealsPage/>}/>
             <Route path="/home" element={ <HomePage/> } />
+            <Route path="/about" element={ <AboutPage/> }/>
 
             <Route path="/devtools" element={ <DevToolsPage/> } />
 

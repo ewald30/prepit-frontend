@@ -406,6 +406,10 @@ input:-moz-placeholder {
         padding-bottom: 0.5rem;
         border-radius: $border-radius-rounder;
     }
+
+    &-underline {
+        text-decoration: underline;
+    }
 }
 
 

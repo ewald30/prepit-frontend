@@ -37,6 +37,7 @@ const Header = (props) => {
 
             <div className="header-right flex-space-around text-bolder text-bigger-2">
                 <div className="header-right-auth flex-space-around">
+                    {!loggedIn && <Link to="/" className="link-header" onClick={() => {handleAnimation(true)}}>Home</Link>}
                     {!loggedIn && <Link to="/auth/login" className="link-header" onClick={() => {handleAnimation(true)}}>Log In</Link>}
                     {!loggedIn && <Link to="/auth/register" className="link-header" onClick={() => {handleAnimation(true)}}>Register</Link>}
                     {loggedIn && <Link to="/auth/my-profile" className="link-header" onClick={() => {handleAnimation(true)}}>My Profile</Link>}
@@ -46,8 +47,8 @@ const Header = (props) => {
                     {/* <Link to="/browse" className="link-header" onClick={() => {handleAnimation(true)}}>Browse</Link> */}
 
                     <Link to="/meal/meal-plan" className="link-header" onClick={() => {handleAnimation(true)}}>Meal plan</Link>
-                    {!loggedIn && <Link to="/" className="link-header" onClick={() => {handleAnimation(true)}}>Home</Link>}
-                    {loggedIn && <Link to="/" className="link-header" onClick={handleLogOut}>Log out</Link>}
+                    <Link to="/about" className="link-header" onClick={() => {handleAnimation(true)}}>About</Link>
+                    {loggedIn && <Link to="/" className="link-header" onClick={() => {handleAnimation(true); handleLogOut()}}>Log out</Link>}
                 </div>
 
                 <div className="header-right-mobile">

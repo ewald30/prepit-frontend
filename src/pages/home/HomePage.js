@@ -46,8 +46,6 @@ const HomePage = (props) => {
     function handleModalOnClose(){
         setIsOpen(false);
         dispatch(setSessionExpired(false));
-        console.log("asdasdasdasda");
-        //navigate('/auth/login');
     }
 
     const getConfigurableProps = () => ({
@@ -116,7 +114,7 @@ const HomePage = (props) => {
                             <div className="modal-email-sent flex-column-center-x">
                                 <img src={alertImg} />
                                 <div style={{'margin-top': '1rem'}} className={'text-bigger text-center text-bold'}> Session expired! Please login.</div>
-                                <Link style={{'margin-top': '1rem'}} to="/auth/login" className="text-bigger text-bolder link-full" onClick={() => {handleAnimation(true)}}>Login</Link>
+                                <Link style={{'margin-top': '1rem'}} to="/auth/login" className="text-bigger text-bolder link-full" onClick={() => {handleModalOnClose();handleAnimation(true)}}>Login</Link>
 
                             </div>
                         </Modal>}

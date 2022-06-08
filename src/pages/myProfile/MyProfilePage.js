@@ -7,10 +7,16 @@ import { updateUser } from '../../api/user/userApi';
 import { BarLoader } from 'react-spinners';
 import logo from '../../assets/svgs/user.png';
 import { authRequestWrapper } from '../../api/auth/auth';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { sessionExpired } from '../../redux/actions/auth';
 
 
 const MyProfilePage = () => {
     const [state, setState] = useState(MyProfileState);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     const { firstName, lastName, timePriceMultiplier, accuracyMultiplier, loading} = state;
     
     useEffect(() => {
@@ -68,10 +74,7 @@ const MyProfilePage = () => {
             priceMultiplier = 1;
         }
 
-        console.log("multis");
-        console.log(timeMultiplier, priceMultiplier);
         const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-        const token = localStorage.getItem('token');
 
         const userDto = {
             accuracyMultiplier: accuracyMultiplier,
@@ -91,10 +94,17 @@ const MyProfilePage = () => {
 
         async function update(userInfo) {
             const updateUserWrapper = authRequestWrapper(updateUser);
-            const response = await updateUserWrapper(userInfo, token);
-            localStorage.setItem('userInfo', JSON.stringify(response));
-            const userInfoUpdated = JSON.parse(localStorage.getItem('userInfo'));
-            updateState(userInfoUpdated);
+            try{
+                const response = await updateUserWrapper(userInfo);
+                localStorage.setItem('userInfo', JSON.stringify(response));
+                const userInfoUpdated = JSON.parse(localStorage.getItem('userInfo'));
+                updateState(userInfoUpdated);
+            } catch(error){
+                if (error.response.status === 401){
+                    dispatch(sessionExpired());
+                    navigate('/home');
+                }
+            }
         }
     }
 

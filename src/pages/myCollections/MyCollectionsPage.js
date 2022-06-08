@@ -31,14 +31,11 @@ const MyCollectionsPage = () => {
             try{
                 const getCollectionsWrapped = authRequestWrapper(getCollections);   // will refresh token if expired
                 const response = await getCollectionsWrapped(userInfo.id);
-                debugger;
                 setState({...state, 
                     collections: response,
                     collectionCreationModalOpen: false
                 })
-                debugger;
             } catch(error){
-                debugger;
                 if (error.response.status === 401){
                     dispatch(sessionExpired());
                     navigate('/home');

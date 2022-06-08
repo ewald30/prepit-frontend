@@ -16,6 +16,9 @@ import { createCollection, saveMealToCollection, getCollections } from '../../ap
 import { BeatLoader, ClimbingBoxLoader } from 'react-spinners';
 import CollectionCreateModal from '../../components/collectionCreateModal/CollectionCreateModal';
 import { authRequestWrapper } from '../../api/auth/auth';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { sessionExpired } from '../../redux/actions/auth';
 
 const MEALS = {
     BREAKFAST : 0,
@@ -29,7 +32,8 @@ const MEALS = {
 const MealPlanPage = () => {
     const [state, setState] = useState(MealPlanPageState);
     const {meals, selectedMeal, selectedRecipe, modalOpen, collectionModalOpen, selectedCollection, loadingSaveMeal, collectionCreationModalOpen} = state;
-
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     // CHANGE BACKEND TO RETURN COLLECTION ID!!!!!!!!
     // pass button for save for collection modal
     // pass 2 inputs for name and description
@@ -53,7 +57,10 @@ const MealPlanPage = () => {
                 setState({...state, loadingSaveMeal: false, collectionCreationModalOpen: false,})
                 handleGetCollections(selectedRecipe);
             } catch (error){
-                console.error(error);
+                if (error.response.status === 401){
+                    dispatch(sessionExpired());
+                    navigate('/home');
+                }
                 setState({...state, loadingSaveMeal: false, collectionCreationModalOpen: false,})
 
             }
@@ -72,34 +79,41 @@ const MealPlanPage = () => {
     function handleGetCollections(meal){
         
         // add loading indicator
-        const token =  localStorage.getItem('token');
         const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-
         getCollectionsForUser();
 
 
         async function getCollectionsForUser(){
             const getCollectionsWrapped = authRequestWrapper(getCollections);
-            const response = await getCollectionsWrapped(userInfo.id)
-            setState({...state, collections: response, collectionModalOpen: true, modalOpen: false, selectedRecipe: meal, collectionCreationModalOpen: false})
+            try{
+                const response = await getCollectionsWrapped(userInfo.id)
+                setState({...state, collections: response, collectionModalOpen: true, modalOpen: false, selectedRecipe: meal, collectionCreationModalOpen: false})
+            } catch(error){
+                if (error.response.status === 401){
+                    dispatch(sessionExpired());
+                    navigate('/home');
+                }
+            }
 
         }
     }
 
     function handleSaveMealToCollection(){
-        const token =  localStorage.getItem('token');
         setState({...state, loadingSaveMeal: true});
         saveMeal();
 
         async function saveMeal(){
             try{
                 const saveMealToCollectionWrapper = authRequestWrapper(saveMealToCollection);
-                await saveMealToCollectionWrapper(token, selectedCollection.collectionId, selectedCollection.name,selectedCollection.description,selectedRecipe)
+                await saveMealToCollectionWrapper(selectedCollection.collectionId, selectedCollection.name,selectedCollection.description,selectedRecipe)
 
                 setState({...state, loadingSaveMeal: false});
                 handleGetCollections(selectedRecipe);
-            } catch (err) {
-                console.log("error:  ", err);
+            } catch (error) {
+                if (error.response.status === 401){
+                    dispatch(sessionExpired());
+                    navigate('/home');
+                }
                 setState({...state, loadingSaveMeal: false});
             }
         }
