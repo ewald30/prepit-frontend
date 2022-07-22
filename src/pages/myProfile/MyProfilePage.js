@@ -138,13 +138,13 @@ const MyProfilePage = () => {
                                 </div>
                             </div>
 
-                            <div className='slider-container'>
+                            {/* <div className='slider-container'>
                                 <div className='slider-container-label text-norma tex-grey'>Price / Time multiplier</div>
                                 <div className=' flex-space-between flex-row-center-y'>
                                     <input value={timePriceMultiplier} className="slider" type="range" name="accuracy" min="-5" max="5" onChange={(e) => setState({...state, timePriceMultiplier: e.target.value})}/>
                                     {timePriceMultiplier? <div className='slider-left'>{timePriceMultiplier}</div> : 0}
                                 </div>
-                            </div>
+                            </div> */}
 
                             <div className='save-container'>
                                 <button className='button-primary save-button' onClick={handleSaveSettings}>Save</button>
