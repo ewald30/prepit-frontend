@@ -122,13 +122,28 @@
 
 
 
-@media (max-height: $media-breakpoint-height-500px){
+@media (max-height: 700px){
     .login-component{
         
         &-bottom-link{
             margin-top: 0rem !important;
             margin-bottom: -2rem !important;
         }
+
+
+    &-mobile-label{
+        font-size: 2.3rem !important;
+    }
+
+    }
+
+    .login-component{
+        &-logo{
+            img{
+                width: 60%;
+            }
+        }
+
     }
     
 }
