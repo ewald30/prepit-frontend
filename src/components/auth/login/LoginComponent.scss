@@ -6,6 +6,9 @@
     padding:2rem;
     margin-left: 3rem;
     box-shadow: $box-shadow-light;
+    height: 100% !important;
+    margin-top: 1rem;
+    margin-bottom: -2rem;
 
     &-container{
 
@@ -25,6 +28,8 @@
     }
 
     &-mobile-label{
+        margin-top: 1rem;
+        margin-bottom: -1rem;
         font-size: 2.5rem !important;
         display: none;
     }
@@ -64,7 +69,7 @@
     .login-component{
         box-shadow: none!important;
         display: flex;;
-        justify-content: flex-start !important;
+        justify-content: center!important;
         height: 100% !important;
 
         &-mobile-label{
@@ -101,7 +106,7 @@
     .login-component{
         &-logo{
             img{
-                width: 60%;
+                width: 70%;
             }
         }
 

@@ -8,11 +8,10 @@ import AnimatedTranslateTransition from '../../../components/utils/AnimatedTrans
 const LoginPage = () => {
     return (
         <div className="login-page">
-                <div className='flex-space-around flex-row-center-y login-page-body'>
+            <AnimatedFadeTransition>
+            <div className='flex-space-around flex-row-center-y login-page-body'>
                     <div className='login-page-form flex-column-center-y'>
-                            <AnimatedTranslateTransition>
                                 <LoginComponent/>
-                            </AnimatedTranslateTransition>
                     </div>
                     <div className={'login-page-graphics'}> 
                         <AnimatedFadeTransition>
@@ -22,6 +21,7 @@ const LoginPage = () => {
                         </AnimatedFadeTransition>
                     </div>
                 </div>
+            </AnimatedFadeTransition>
         </div>
     )
 }

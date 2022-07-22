@@ -13,6 +13,7 @@ const AnimatedFadeTransition = ({children}) => {
         initial={'initial'}
         animate={'animate'}
         exit={'exit'}
+        style={{'height':'100%'}}
         >
             {children}
         </motion.div>
