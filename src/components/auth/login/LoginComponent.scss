@@ -42,8 +42,9 @@
     }
 
     &-footer-button{
-        width: 100%;
+        width: 100% !important;
     }
+
 }
 
 .mobile-illustration{
@@ -124,10 +125,26 @@
 @media (max-height: 700px){
     .login-component{
 
+        &-logo{
+            img{
+                width: 60%;
+                margin-bottom: -1rem;
+            }
+        }
 
-    &-mobile-label{
-        font-size: 2.3rem !important;
-    }
+        &-mobile-label{
+            font-size: 2.3rem !important;
+        }
+
+        &-cta{
+            width: 100% !important;
+            margin-top: -.5rem !important;
+        }
+
+        &-bottom-link{
+            margin-top: 0.5rem !important;
+            margin-bottom: 0rem !important;
+        }
 
     }
     
