@@ -6,7 +6,7 @@ import '../../assets/styles/_shared.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { logOut, sessionExpired, setLoggedIn } from '../../redux/actions/auth';
 import NavbarMobile from '../navbarMobile/NavbarMobile';
-import menuIcon from '../../assets/svgs/icons/menu.svg';
+import menuIcon from '../../assets/svgs/icons/menu_green.svg';
 import logo from '../../assets/svgs/logo_iconOnly.svg';
 
 
@@ -32,7 +32,9 @@ const Header = (props) => {
                 <div className={'header-logo-image'}>
                     <img className={'logo-rounded'} src={logo}/>
                 </div>
-                <img src={logoTitle} id={'header-logo'}/>
+                <Link to="/">
+                    <img src={logoTitle} id={'header-logo'}/>
+                </Link>
             </div>
 
             <div className="header-right flex-space-around text-bolder text-bigger-2">

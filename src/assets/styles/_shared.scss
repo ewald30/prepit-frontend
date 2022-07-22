@@ -116,6 +116,13 @@
         -webkit-text-fill-color: transparent;
     }
 
+    &-gradient-mobile{
+        font-size: 3rem;
+        background: -webkit-linear-gradient(90deg, rgba(41,71,74,1) 0%, rgba(177,189,162,1) 99%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
 
 }
 
@@ -316,6 +323,45 @@
                 top: 0;
             }
         }
+    }
+}
+
+@media (min-width: 268px){
+    .input{
+        height: 41px;
+        margin-top: .4rem;
+        margin-bottom: .4rem;
+        width: 250px;
+
+        &-icon{
+            position: relative;
+    
+            img {
+                top: 9px;
+                right:0px;
+            }
+    
+            &-info{
+                position: absolute;
+                top: 20px;
+                right: 15px;
+                display: inline-block
+            }
+        }
+    }
+
+    .button{
+        height: 41px;
+        margin-top: .4rem;
+        margin-bottom: .4rem;
+        width: 250px !important;
+        text-align: center;
+        font-size: 1.4rem !important;
+
+    }
+
+    .text-bigger{
+        font-size: 1.4rem !important;
     }
 }
 
