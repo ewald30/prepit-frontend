@@ -47,7 +47,7 @@ const Header = (props) => {
                     {/* <Link to="/browse" className="link-header" onClick={() => {handleAnimation(true)}}>Browse</Link> */}
 
                     <Link to="/meal/meal-plan" className="link-header" onClick={() => {handleAnimation(true)}}>Meal plan</Link>
-                    <Link to="/about" className="link-header" onClick={() => {handleAnimation(true)}}>About</Link>
+                    {/* <Link to="/about" className="link-header" onClick={() => {handleAnimation(true)}}>About</Link> */}
                     {loggedIn && <Link to="/" className="link-header" onClick={handleLogOut}>Log out</Link>}
                 </div>
 

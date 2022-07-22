@@ -38,7 +38,7 @@ export default function MealModal(props) {
                         {item.prep_time && <MealModalInfo icon={refrigerator} label={'Preparation Time'} info={item.prep_time}/>}
                         {item.cook_time && <MealModalInfo icon={timer} label={'Cook Time'} info={item.cook_time}/>}
                         {item.time_score && <MealModalInfo icon={stopwatch} label={'Time score'} info={`${item.time_score} / 5`}/>}
-                        {item.price_score && <MealModalInfo icon={dollar} label={'Price score'} info={`${item.price_score} / 5`}/>}
+                        {/* {item.price_score && <MealModalInfo icon={dollar} label={'Price score'} info={`${item.price_score} / 5`}/>} */}
                         {item.calories && <MealModalInfo icon={chart} label={"Calories"} info={item.calories}/>}
                         {item.serving && <MealModalInfo icon={bowl} label={'Serving'} info={item.serving}/>} 
                         {item.type && <MealModalInfo icon={tag} label={'Type'} info={item.type}/>}

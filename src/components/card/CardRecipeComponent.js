@@ -32,9 +32,9 @@ const CardRecipeComponent = (props) => {
                             <div className={"card-footer-time-rating"}>
                                 <RatingComponent rating={timeRating} iconGrey={stopwatch} iconColor={stopwatch_colored} />
                             </div>
-                            <div className={"card-footer-price-rating"}>
+                            {/* <div className={"card-footer-price-rating"}>
                                 <RatingComponent rating={priceRating} iconGrey={dollar} iconColor={dollar_colored} />
-                            </div>
+                            </div> */}
                         </div>
                 </div>
             </div>
