@@ -76,7 +76,7 @@ const LoginComponent = () => {
             </div>
 
             <div className='login-component-mobile-label text-bold text-center text-gradient-mobile'>
-                            Login
+                            Login now!
             </div>
 
             <div>
