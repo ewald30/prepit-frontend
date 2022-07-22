@@ -69,15 +69,15 @@ const LoginComponent = () => {
         <div className={'generic-container flex-column-center-x login-component'}>
             <div className={'generic-container-header login-component-logo'}>
                 <img className={'logo-rounded '} src={logo}/>
-                <img className={'mobile-illustration'} src={illustration}/>
+                <img className={'mobile-illustration svg-shadow'} src={illustration}/>
             </div>
 
             <div>
             </div>
 
-            <div className='login-component-mobile-label text-bold text-center text-gradient-mobile'>
+            {/* <div className='login-component-mobile-label text-bold text-center text-gradient-mobile'>
                             Login now!
-            </div>
+            </div> */}
 
             <div>
                 <div className={'generic-container-body'}>

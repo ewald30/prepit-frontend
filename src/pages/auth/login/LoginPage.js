@@ -14,11 +14,9 @@ const LoginPage = () => {
                                 <LoginComponent/>
                     </div>
                     <div className={'login-page-graphics'}> 
-                        <AnimatedFadeTransition>
                             <div className={'text-big text-center text-dark-grey login-page-graphics-text text-bold'}>
                                 Start upgrading your meal prepping game!
                             </div>
-                        </AnimatedFadeTransition>
                     </div>
                 </div>
             </AnimatedFadeTransition>
