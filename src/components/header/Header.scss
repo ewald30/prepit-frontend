@@ -118,14 +118,25 @@
 @media (max-width: $media-breakpoint-width-phone-large) {
 
     #header-logo{
-        // width: 6rem;
-        display: none;
+        width: 5rem;
+        // display: none;
     }
 
 
     .header{
         justify-content: space-between;
+        align-items: center;
         overflow-x: hidden;
+
+
+        &-logo-image{
+            // display: block;
+            img{
+                width: 2rem;
+                height:2rem;
+            }
+
+        }
 
         &-left{
             margin-left: 2rem;
@@ -140,14 +151,15 @@
             }
 
             &-mobile{
-                background-color: $accent;
+                // background-color: $accent;
                 padding: 5px;
                 padding-right: 35px;
                 padding-bottom: 3px;
                 border-radius: 15px;
                 //box-shadow: $box-shadow-light;
                 display: block;
-                margin-right: -3rem;
+                margin-right: -1rem;
+                margin-top: -1rem;
                 z-index: 10001;
                 img{
                     width:2rem;

@@ -13,7 +13,7 @@ import { BarLoader } from "react-spinners";
 import { validateLoginForm } from "../../../resources/validation/loginValidation";
 import { getUserInfo } from "../../../api/user/userApi";
 import { authRequestWrapper } from "../../../api/auth/auth";
-
+import illustration from '../../../assets/svgs/illustrations/undraw_welcome.svg';
 
 const LoginComponent = () => {
 
@@ -69,6 +69,14 @@ const LoginComponent = () => {
         <div className={'generic-container flex-column-center-x login-component'}>
             <div className={'generic-container-header login-component-logo'}>
                 <img className={'logo-rounded '} src={logo}/>
+                <img className={'mobile-illustration'} src={illustration}/>
+            </div>
+
+            <div>
+            </div>
+
+            <div className='login-component-mobile-label text-bold text-center text-gradient-mobile'>
+                            Login
             </div>
 
             <div>

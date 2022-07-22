@@ -110,6 +110,14 @@
         display:none;
     }
 
+    .login-page{
+        background-color: white;
+        &-form{
+        width: 100%;
+        height: 100% !important;
+    }
+}
+
 }
 
 @media (max-width: $media-breakpoint-width-phone-medium){
@@ -117,7 +125,7 @@
             background-color: white;
             &-form{
             width: 100%;
-            height: 100%;
+            height: 100% !important;
         }
     }
 }
