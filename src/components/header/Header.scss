@@ -29,6 +29,15 @@
     &-navbar-content{
         display:flex;
         flex-direction: column;
+        margin-right: 0rem;
+        width: 100%;
+        &-item{
+            margin-top: .7rem;
+
+            &-label{
+                margin-right: .5rem !important;
+            }
+        }
 
     }
 

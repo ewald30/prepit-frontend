@@ -8,7 +8,14 @@ import { logOut, sessionExpired, setLoggedIn } from '../../redux/actions/auth';
 import NavbarMobile from '../navbarMobile/NavbarMobile';
 import menuIcon from '../../assets/svgs/icons/menu_green.svg';
 import logo from '../../assets/svgs/logo_iconOnly.svg';
-
+import logInIcon from '../../assets/svgs/icons/log-in.svg';
+import registerIcon from '../../assets/svgs/icons/user.svg';
+import mealPlanIcon from '../../assets/svgs/icons/bowl.svg';
+import homeIcon from '../../assets/svgs/icons/home-alt.svg'
+import logOutIcon from '../../assets/svgs/icons/log-out.svg';
+import userIcon from '../../assets/svgs/icons/profile-green.svg';
+import collectionsIcon from '../../assets/svgs/icons/album.svg';
+import aboutIcon from '../../assets/svgs/icons/info.svg'
 
 
 const Header = (props) => {
@@ -49,7 +56,7 @@ const Header = (props) => {
                     {/* <Link to="/browse" className="link-header" onClick={() => {handleAnimation(true)}}>Browse</Link> */}
 
                     <Link to="/meal/meal-plan" className="link-header" onClick={() => {handleAnimation(true)}}>Meal plan</Link>
-                    {/* <Link to="/about" className="link-header" onClick={() => {handleAnimation(true)}}>About</Link> */}
+                    <Link to="/about" className="link-header" onClick={() => {handleAnimation(true)}}>About</Link>
                     {loggedIn && <Link to="/" className="link-header" onClick={handleLogOut}>Log out</Link>}
                 </div>
 
@@ -60,20 +67,61 @@ const Header = (props) => {
 
 
                 {menuOpen && <NavbarMobile className="header-navbar" isOpen={menuOpen} onClose={() => setMenuOpen(false)}>
-                    <div className="header-navbar-content flex-column-end-x">
-                        {!loggedIn && <Link to="/auth/login" className="link-header text-bigger" onClick={() => {handleAnimation(true)}}>Log In</Link>}
-                        {!loggedIn && <Link to="/auth/register" className="link-header text-bigger" onClick={() => {handleAnimation(true)}}>Register</Link>}
-                        {loggedIn && <Link to="/auth/my-profile" className="link-header text-bigger" onClick={() => {handleAnimation(true)}}>My Profile</Link>}
-                        {loggedIn && <Link to="/collections" className="link-header text-bigger" onClick={() => {handleAnimation(true)}}>Collections</Link>}
+                    <div className="header-navbar-content flex-column-end-x text-bolder text-accent">
+                        {!loggedIn && 
+                            <Link to="/auth/login" onClick={() => {handleAnimation(true)}} className='flex-row flex-row-center-y header-navbar-content-item link-header'>
+                                <div className="text-bigger header-navbar-content-item-label">Log In</div>
+                                <img src={logInIcon} />
+                            </Link>
+                        }
+                        {!loggedIn && 
+                            <Link to="/auth/register" onClick={() => {handleAnimation(true)}} className='flex-row flex-row-center-y header-navbar-content-item link-header'>
+                                <div to="/auth/register" className="text-bigger header-navbar-content-item-label">Register</div>
+                                <img src={registerIcon}/>
+                            </Link>
+                         }
+
+
+                        {loggedIn && 
+                            <Link to="/auth/my-profile" onClick={() => {handleAnimation(true)}} className='flex-row flex-row-center-y header-navbar-content-item link-header'>
+                                <div className="text-bigger header-navbar-content-item-label">My Profile</div>
+                                <img src={userIcon}/>
+                            </Link>
+                        }
+                        {loggedIn && 
+                            <Link to="/collections" onClick={() => {handleAnimation(true)}} className='flex-row flex-row-center-y header-navbar-content-item link-header'>
+                                <div className="text-bigger header-navbar-content-item-label">Collections</div>
+                                <img src={collectionsIcon}/>
+                            </Link>
+                        }
 
                         {/* <Link to="/browse" className="link-header text-bigger" onClick={() => {handleAnimation(true)}}>Browse</Link> */}
-                        <Link to="/meal/meal-plan" className="link-header text-bigger" onClick={() => {handleAnimation(true)}}>Meal plan</Link>
-                        {!loggedIn && <Link to="/" className="link-header text-bigger" onClick={() => {handleAnimation(true)}}>Home</Link>}
-                        {loggedIn && <Link to="/" className="link-header text-bigger" onClick={handleLogOut}>Log out</Link>}
+                        {!loggedIn && 
+                            <Link to="/" onClick={() => {handleAnimation(true)}} className='flex-row flex-row-center-y header-navbar-content-item link-header '>
+                                <div to="/" className="text-bigger header-navbar-content-item-label">Home</div>
+                                <img src={homeIcon}/>
+                            </Link>
+                        }
+
+                        <Link to="/meal/meal-plan" onClick={() => {handleAnimation(true)}} className='flex-row flex-row-center-y header-navbar-content-item link-header'>
+                            <div  className="text-bigger header-navbar-content-item-label">Meal plan</div>
+                            <img src={mealPlanIcon}/>
+                        </Link>
+
+                        {loggedIn && 
+                            <Link to="/" onClick={handleLogOut} className='flex-row flex-row-center-y header-navbar-content-item link-header '>
+                                <div to="/" className="text-bigger header-navbar-content-item-label" onClick={handleLogOut}>Log out</div>
+                                <img src={logOutIcon}/>
+                            </Link>
+                        }
+
+                        <Link to="/about" onClick={() => {handleAnimation(true)}} className='flex-row flex-row-center-y header-navbar-content-item link-header '>
+                            <div className="text-bigger header-navbar-content-item-label">About</div>
+                            <img src={aboutIcon}/>
+                        </Link>
+
 
                         {/* {loggedIn && <Link to="/devtools" className="link-header" onClick={() => {handleAnimation(true)}}>Dev tools</Link> }  */}
-
-
                     </div>
                 </NavbarMobile>}
         </header>
