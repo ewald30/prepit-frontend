@@ -43,17 +43,11 @@
     background-size:contain;
 
 
-  }
+}
 
-  @media (max-width: $media-breakpoint-width-phone-large) {
-      .blur{
-        background-position: $background-position-mobile-desktop, 
-        $background-position-mobile-blob2,
-        //$background-position-blob3,
-        //$background-position-blob4,
-        $background-position-mobile-blob5,
-        $background_position-mobile-blob23,
-        $background_position-mobile-blob6;
-        //$background_position-blob23_2;
-      }
-  }
+
+@media (max-width: $media-breakpoint-width-phone-large) {
+    .app{
+        background-color: white;
+    }
+}

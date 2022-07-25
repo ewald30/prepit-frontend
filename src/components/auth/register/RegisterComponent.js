@@ -12,7 +12,7 @@ import { BarLoader } from "react-spinners";
 import './RegisterComponent.scss';
 import { validateRegisterForm } from "../../../resources/validation/registerValidation";
 import RegisterPasswordRequirements from "./RegisterPasswordRequirements";
-
+import registerIllustration from '../../../assets/svgs/illustrations/undraw_unlock.svg';
 
 
 const RegisterComponent = (props) => {
@@ -64,7 +64,8 @@ const RegisterComponent = (props) => {
     return (
         <div className={'generic-container flex-column-center-x flex-space-between register-component'}>
             <div className={'generic-container-header register-component-logo'}>
-                <img className={'logo-rounded'} src={logo}/>
+                <img className={'logo-rounded register-desktop-logo'} src={logo}/>
+                <img className={'svg-shadow register-mobile-illustration'} src={registerIllustration}/>
             </div>
 
             <div className="flex-column-center-x">
