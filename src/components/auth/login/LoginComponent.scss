@@ -52,9 +52,13 @@
 }
 
 
-@media (max-width: $media-breakpoint-width-tablet-large) {
+@media (max-width: $media-breakpoint-width-tablet-medium) {
     .login-component{
         margin-left: 0px;
+    }
+
+    .login-component{
+        background-color: rgba($color: #fff, $alpha: .0) !important;
     }
 }
 
@@ -91,6 +95,7 @@
 
 @media (max-width: $media-breakpoint-width-phone-medium){
     .login-component{
+
         &-logo{
             img{
                 width: 80%;

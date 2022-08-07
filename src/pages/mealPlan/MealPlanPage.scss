@@ -1,8 +1,6 @@
 @import '../../assets/styles/shared';
 
 .meal-plan-page{
-    overflow-x: hidden;
-    overflow-y: scroll!important;
     height: 100%;
 
     &-container{
@@ -120,6 +118,7 @@
 
 @media (max-width: $media-breakpoint-width-phone-large){
         .meal-plan-page{
+
             &-form{
             }
 
