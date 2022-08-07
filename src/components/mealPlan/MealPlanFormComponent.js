@@ -138,7 +138,7 @@ const MealPlanFormComponent = (props) => {
 
     return (
         <div className="meal-form generic-container flex-column-center-x">
-            <div className={'generic-container-header'} style={{'margin-bottom':'2rem'}}>
+            <div className={'generic-container-header meal-form-graphics'} style={{'margin-bottom':'2rem'}}>
                 <div className="text-biggest text-accent text-handwriting">Meal Plan</div>
             </div>
 
